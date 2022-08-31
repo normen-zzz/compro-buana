@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.bg-primary2 {
+  background-color: rgb(209, 228, 255);
+}
+
+/* New Book */
+#newbook .col-lg-3 {
+  transition: 0.5s;
+}
+
+#newbook img {
+  box-shadow: rgb(255, 255, 255) 5px 5px, rgb(81, 153, 255) 10px 10px;
+}
+
+#newbook .col-lg-3:hover {
+  margin: 0 !important;
+}
+
+/* About */
+#about iframe {
+  box-shadow: rgb(255, 255, 255) 5px 5px, rgb(81, 153, 255) 10px 10px;
+}
+
+/* Artikel */
+#artikel a {
+  transition: 0.5s;
+}
+
+#artikel a:hover {
+  margin-left: 10px;
+}
+
+#artikel .card {
+  transition: 0.5s;
+}
+
+#artikel .card:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
