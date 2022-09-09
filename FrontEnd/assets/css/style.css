@@ -53,9 +53,30 @@ body {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
+/* Tentang */
+#tentang p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+}
+
 @media only screen and (max-width: 991px) {
   nav .nav-link {
     padding: 25px 0 !important;
     margin: 0 !important;
+  }
+
+  /* Produk */
+  #newbook .pembungkus {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  #newbook .jarak {
+    margin: 0 !important;
+  }
+
+  #newbook .search-top {
+    text-align: center !important;
   }
 }
