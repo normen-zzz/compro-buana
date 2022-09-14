@@ -19,16 +19,13 @@ body {
 }
 
 /* New Book */
-#newbook .col-lg-3 {
+#newbook .card {
   transition: 0.5s;
 }
 
-#newbook img {
-  box-shadow: rgb(255, 255, 255) 5px 5px, rgb(81, 153, 255) 10px 10px;
-}
-
-#newbook .col-lg-3:hover {
-  margin: 0 !important;
+#newbook .card:hover {
+  transform: scale(0.95);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
 }
 
 /* About */
@@ -37,14 +34,6 @@ body {
 }
 
 /* Artikel */
-#artikel a {
-  transition: 0.5s;
-}
-
-#artikel a:hover {
-  margin-left: 10px;
-}
-
 #artikel .card {
   transition: 0.5s;
 }
@@ -72,8 +61,16 @@ body {
     grid-template-columns: auto auto;
   }
 
-  #newbook .jarak {
-    margin: 0 !important;
+  #newbook .pembungkus h5 {
+    font-size: 18px;
+  }
+
+  #newbook .pembungkus p {
+    font-size: 13px;
+  }
+
+  #newbook .pembungkus img {
+    padding: 0 !important;
   }
 
   #newbook .search-top {
