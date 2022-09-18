@@ -49,6 +49,25 @@ body {
   letter-spacing: 3px;
 }
 
+/* Gallery */
+#gallery .card {
+  transition: 0.3s;
+}
+
+#gallery img {
+  filter: brightness(90%);
+  transition: 0.3s;
+}
+
+#gallery .card:hover img {
+  filter: brightness(100%);
+}
+
+#gallery .card:hover {
+  scale: 110% !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 @media only screen and (max-width: 991px) {
   nav .nav-link {
     padding: 25px 0 !important;
