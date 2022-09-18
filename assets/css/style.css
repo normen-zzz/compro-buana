@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bg-primary2 {
+    background-color: rgb(209, 228, 255);
+}
+
+.search:focus {
+    outline: none;
+}
+
+/* Navbar */
+.navbar-nav .nav-link.active,
+.navbar-nav .show > .nav-link {
+    color: rgb(81, 153, 255) !important;
+}
+
+/* New Book */
+#newbook .card {
+    transition: 0.5s;
+}
+
+#newbook .card:hover {
+    transform: scale(0.95);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+
+/* About */
+#about iframe {
+    box-shadow: rgb(255, 255, 255) 5px 5px, rgb(81, 153, 255) 10px 10px;
+}
+
+/* Artikel */
+#artikel .card {
+    transition: 0.5s;
+}
+
+#artikel .card:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+/* Tentang */
+#tentang p {
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 3px;
+}
+
+/* Gallery */
+#gallery .card {
+    transition: 0.3s;
+}
+
+#gallery img {
+    filter: brightness(90%);
+    transition: 0.3s;
+}
+
+#gallery .card:hover img {
+    filter: brightness(100%);
+}
+
+#gallery .card:hover {
+    scale: 110% !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media only screen and (max-width: 991px) {
+    nav .nav-link {
+        padding: 25px 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Produk */
+    #newbook .pembungkus {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    #newbook .pembungkus h5 {
+        font-size: 18px;
+    }
+
+    #newbook .pembungkus p {
+        font-size: 13px;
+    }
+
+    #newbook .pembungkus img {
+        padding: 0 !important;
+    }
+
+    #newbook .search-top {
+        text-align: center !important;
+    }
+}
