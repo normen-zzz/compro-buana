@@ -38,6 +38,20 @@ class Galeri_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+	// Listing kategori
+	public function jenis_admin($jenis_galeri)
+	{
+		$this->db->select('galeri.*, kategori_galeri.nama_kategori_galeri, users.nama');
+		$this->db->from('galeri');
+		// Join dg 2 tabel
+		$this->db->join('kategori_galeri', 'kategori_galeri.id_kategori_galeri = galeri.id_kategori_galeri', 'LEFT');
+		$this->db->join('users', 'users.id_user = galeri.id_user', 'LEFT');
+		// End join
+		$this->db->where(array('galeri.jenis_galeri'	=> $jenis_galeri));
+		$this->db->order_by('id_galeri', 'DESC');
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 	public function showCategoryGaleryByYear($year)
 	{
