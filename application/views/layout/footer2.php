@@ -74,10 +74,10 @@ $nav_profil     = $this->nav_model->nav_profil();
                         <i class="fas fa-envelope mr-3"></i> <?php echo $site->email ?>
                     </p>
                     <p class="fw-light small">
-                        <a href="https://wa.me/<?php echo str_replace('+', '', $site->hp) ?>"><i class="fas fa-phone mr-3"></i> +62 234 567 88</a>
+                        <a href="https://wa.me/<?php echo str_replace('+', '', $site->hp) ?>"><i class="fas fa-phone mr-3"></i> <?= $site->hp ?></a>
                     </p>
                     <p class="fw-light small">
-                        <i class="fas fa-print mr-3"></i> +62 234 567 89
+                        <i class="fas fa-print mr-3"></i> <?= $site->telepon ?>
                     </p>
                 </div>
             </div>
@@ -86,7 +86,7 @@ $nav_profil     = $this->nav_model->nav_profil();
 
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
         © <?php echo date('Y') ?> Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/"><?php echo $site->namaweb ?></a>
+        <a class="text-white" href="<?= base_url() ?>"><?php echo $site->namaweb ?></a>
     </div>
 </footer>
 <!-- Footer Akhir -->

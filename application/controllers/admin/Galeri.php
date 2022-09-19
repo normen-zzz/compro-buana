@@ -254,6 +254,18 @@ class Galeri extends CI_Controller
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
 	}
 
+	// Jenis berita
+	public function jenis_galeri($jenis_galeri)
+	{
+		$galeri = $this->galeri_model->jenis_admin($jenis_galeri);
+		$data = array(
+			'title'			=> 'Jenis Galeri: ' . $jenis_galeri . ' (' . count($galeri) . ')',
+			'galeri'		=> $galeri,
+			'isi'			=> 'admin/galeri/list'
+		);
+		$this->load->view('admin/layout/wrapper', $data, FALSE);
+	}
+
 
 	// Delete
 	public function delete($id_galeri)

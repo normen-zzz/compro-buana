@@ -1,3 +1,20 @@
+<!-- Breadcrumbs -->
+<div class="container pt-5">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item small">
+                        <a href="<?= base_url('Home') ?>" class="text-secondary text-decoration-none">Home</a>
+                    </li>
+                    <li class="breadcrumb-item small active text-primary" aria-current="page">
+                        Kontak
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
 <!-- kontak -->
 <section class="py-5">
     <div class="container bg-white shadow">
