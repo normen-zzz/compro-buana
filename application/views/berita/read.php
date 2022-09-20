@@ -1,78 +1,56 @@
-<section class="bg-single-blog">
-    <div class="container">
-        <div class="row">
-            <div class="single-blog">
-                <div class="row">
-                    <div class="col-md-8">
-
-                        <div class="blog-items">
-                            <?php if($berita->gambar !="") { ?>
-                                <div class="blog-img" style="width:770px;height:370px;">
-                                    <a href="#"><img src="<?php echo base_url('assets/upload/image/'.$berita->gambar) ?>" alt="blog-img-10" class="img-responsive" /></a>
-                                </div>
-                            <?php } ?>
-                            <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="meta-box">
-                                    <div class="event-author-option">
-                                        <div class="event-author-name">
-                                            <p>Posted by : <a href="#"> <?php echo $berita->nama; ?></a></p>
-                                        </div>
-                                        <!-- .author-name -->
-                                    </div>
-                                    <!-- .author-option -->
-                                    <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($berita->tanggal_publish)); ?></li>
-                                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i> <?php echo $berita->hits; ?> Viewer</a></li>
-                                    </ul>
-                                </div>
-                                <!-- .meta-box -->
-                                <div class="blog-content">
-                                    <h4><?php echo $berita->judul_berita; ?></h4>
-
-                                    <p class="text-justify"><?php echo $berita->isi; ?></p>
-                                </div>
-                                <!-- .blog-content -->
-                            </div>
-                            <!-- .blog-content-box -->
-                        </div>
-                        <!-- .blog-items -->
-                    </div>
-                    <!-- .col-md-8 -->
-                    <div class="col-md-4">
-                        <div class="sidebar">
-                            <div class="widget">
-                                <h4 class="sidebar-widget-title">Berita Lainnya</h4>
-                                <div class="widget-content">
-                                    <ul class="popular-news-option">
-                                        <?php foreach($listing as $listing) { ?>
-                                            <li>
-                                                <div class="popular-news-img" style="width: 80px; height: 80px;">
-                                                    <a href="#"><img src="<?php if($listing->gambar=="") { echo base_url('assets/upload/image/thumbs/'.$site->icon); }else{ echo base_url('assets/upload/image/thumbs/'.$listing->gambar); } ?>" alt="popular-news-img-1" /></a>
-                                                </div>
-                                                <!-- .popular-news-img -->
-                                                <div class="popular-news-contant">
-                                                    <h5><a href="<?php echo base_url('berita/read/' . $listing->slug_berita); ?>"><?php echo $listing->judul_berita; ?></a></h5>
-                                                    <p><?php echo date('d M Y', strtotime($listing->tanggal_publish)); ?></p>
-                                                </div>
-                                                <!-- .popular-news-img -->
-                                            </li>
-                                        <?php } ?>
-                                    </ul>
-
-                                </div>
-                                <!-- .widget-content -->
-                            </div>
-                        </div>
-                        <!-- .sidebar -->
-                    </div>
-                    <!-- .col-md-4 -->
-                </div>
-                <!-- .row -->
-            </div>
-            <!-- .single-blog -->
+<!-- Breadcrumbs -->
+<div class="container pt-5">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item small">
+                        <a href="<?= base_url() ?>" class="text-secondary text-decoration-none">Home</a>
+                    </li>
+                    <li class="breadcrumb-item small">
+                        <a href="<?= base_url('Berita') ?>" class="text-secondary text-decoration-none">Artikel</a>
+                    </li>
+                    <li class="breadcrumb-item small active text-primary" aria-current="page">
+                        <?= $berita->judul_berita ?>
+                    </li>
+                </ol>
+            </nav>
         </div>
-        <!-- .row -->
     </div>
-    <!-- .container -->
+</div>
+<!-- Breadcrumbs Akhir -->
+
+<!-- Detail Artikel -->
+<section>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 text-center">
+                <h5 class="pb-4">
+                    <?= $berita->judul_berita ?>
+                </h5>
+                <img src="<?php echo base_url('assets/upload/image/thumbs/' . $berita->gambar); ?>" class="img-fluid w-100" alt="" />
+            </div>
+        </div>
+        <div class="row pt-5">
+            <div class="col">
+                <p class="text-secondary fw-light small">
+                    <?= date('d M Y', strtotime($berita->tanggal_publish))  ?> | <?= $berita->nama ?>
+                </p>
+                <p>
+                    <?= $berita->isi ?>
+                </p>
+                <div class="d-flex pt-5">
+                    <p class="pe-3">Share this article:</p>
+                    <a href="http://www.facebook.com/sharer.php?u=<?= base_url('Berita/read/' . $berita->slug_berita) ?>" target="_blank" class="text-decoration-none me-4">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/share?url=<?= base_url('Berita/read/' . $berita->slug_berita) ?>&text=Simple%20Share%20Buttons&hashtags=simplesharebuttons" target="_blank" class="text-decoration-none me-4">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+<!-- Detail Artikel Akhir -->

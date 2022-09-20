@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2020 at 01:58 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Waktu pembuatan: 20 Sep 2022 pada 05.44
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `workshop_sample`
+-- Database: `compro-buana`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `agenda`
+-- Struktur dari tabel `agenda`
 --
 
 CREATE TABLE `agenda` (
@@ -42,7 +41,7 @@ CREATE TABLE `agenda` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `agenda`
+-- Dumping data untuk tabel `agenda`
 --
 
 INSERT INTO `agenda` (`id_agenda`, `nama`, `jenis_agenda`, `panitia`, `tempat`, `mulai`, `selesai`, `ringkasan`, `isi`, `tanggal`) VALUES
@@ -51,7 +50,7 @@ INSERT INTO `agenda` (`id_agenda`, `nama`, `jenis_agenda`, `panitia`, `tempat`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bagian`
+-- Struktur dari tabel `bagian`
 --
 
 CREATE TABLE `bagian` (
@@ -66,19 +65,10 @@ CREATE TABLE `bagian` (
   `tanggal_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `bagian`
---
-
-INSERT INTO `bagian` (`id_bagian`, `id_user`, `kode_bagian`, `nama_bagian`, `status_bagian`, `keterangan`, `wilayah`, `tanggal_post`, `tanggal_update`) VALUES
-(12, 1, 'MARKETING', 'Bagian Pemasaran', 'Aktif', '', '', '2019-04-13 20:10:33', '2019-04-13 13:10:33'),
-(13, 1, 'KEUANGAN', 'Bagian Keuangan', 'Aktif', '', '', '2019-04-13 20:10:46', '2019-04-13 13:10:46'),
-(14, 1, 'adada', 'adad', 'Aktif', '', '', '2019-04-14 05:45:14', '2019-04-13 22:45:14');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `berita`
+-- Struktur dari tabel `berita`
 --
 
 CREATE TABLE `berita` (
@@ -100,25 +90,28 @@ CREATE TABLE `berita` (
   `tanggal_selesai` date DEFAULT NULL,
   `tanggal_post` datetime NOT NULL,
   `tanggal_publish` datetime NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `link` text DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `berita`
+-- Dumping data untuk tabel `berita`
 --
 
-INSERT INTO `berita` (`id_berita`, `id_user`, `id_kategori`, `updater`, `slug_berita`, `judul_berita`, `isi`, `status_berita`, `jenis_berita`, `keywords`, `gambar`, `icon`, `hits`, `urutan`, `tanggal_mulai`, `tanggal_selesai`, `tanggal_post`, `tanggal_publish`, `tanggal`) VALUES
-(1, 1, 5, '', 'pembuatan-website-profil', 'Pembuatan Website Profil', '<h3><strong>Tujuan</strong></h3>\r\n<p>Website perusahaan dibangun sebagai:</p>\r\n<ul>\r\n<li>Sarana komunikasi resmi perusahaan dengan pelanggan</li>\r\n<li>Menyediakan informasi resmi perusahaan</li>\r\n<li>Menyajikan informasi produk dan layanan yang dimiliki</li>\r\n<li>Sebagai media pemasaran bagi perusahaan</li>\r\n</ul>\r\n<h3><strong>Fitur-fitur utama</strong></h3>\r\n<p>Website perusahaan ini menyediakan fitur-fitur sebagai berikut (disesuaikan dengan paket yang dipilih):</p>\r\n<ol>\r\n<li>Modul Berita untuk mengelola dan menampilkan berita</li>\r\n<li>Modul Profil untuk mengelola dan menampilkan profil perusahaan</li>\r\n<li>Modul Staff untuk mengelola dan menampilkan data staff/personil perusahaan</li>\r\n<li>Modul Galeri untuk mengelola galeri foto dan menampilkannya</li>\r\n<li>Modul Video berfungsi untuk mempublikasikan video sebagai sarana komunikasi</li>\r\n<li>Modul Agenda/Event untuk menampilkan event-event atau agenda yang ada di perusahaan</li>\r\n<li>Modul Produk dan layanan untuk mengelola dan menampilkan produk/layanan yang dipasarkan</li>\r\n<li>Modul Kontak untuk mengelola komunikasi pelanggan/customer dengan perusahaan</li>\r\n<li>Modul SEO untuk membantu hasil pencarian di Google</li>\r\n<li>Integrasi dengan jejaring sosial yang dimiliki</li>\r\n<li>Dan fitur-fitur lainnya</li>\r\n</ol>\r\n<h3>Paket Dasar</h3>\r\n<table class=\"table table-bordered table-stripped table-hover tiny-table\" border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">\r\n<tbody>\r\n<tr>\r\n<td>Website UKM Dasar</td>\r\n<td>Hosting 250MB<br />Bandwidth Unlimited</td>\r\n<td>Rp. 1.500.000&nbsp;<sup class=\"text-danger\">*</sup></td>\r\n</tr>\r\n<tr>\r\n<td>Website Perusahaan Kecil</td>\r\n<td>Hosting dan bandwidth unlimeted<br />Fully responsive web design</td>\r\n<td>Rp. 3.000.000&nbsp;<sup class=\"text-danger\">*</sup></td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\"><span class=\"text-danger\">* Harga dasar dengan syarat tertentu</span></td>\r\n</tr>\r\n</tbody>\r\n</table>', 'Publish', 'Berita', 'Pastikan perusahaan Anda bisa diakses secara online sehingga meningkatkan brand image perusahaan yang akhirnya meningkatkan omset usaha.', 'website-perusahaan-company-profile-web-javawebmedia11.jpg', '', 3, 0, NULL, NULL, '2019-05-13 15:51:51', '2019-05-13 15:51:36', '2020-02-13 00:44:24'),
-(2, 1, 5, '', 'kursus-statistik', 'Kursus Statistik', '<p>Tujuan dari kursus ini adalah mampu melakukan manajemen dan analisis data dengan SPSS/Stata dan melakukan analisis deskriptif dan penyajian data serta intrepretasinya.</p>\r\n<p>Materi Kursus:</p>\r\n<ul>\r\n<ul>\r\n<li>Pengantar manajemen dan analisis data</li>\r\n<li>Transfer data, Entry data dan Cleaning Data</li>\r\n<li>Transformasi data (select cases, recode, split, dll)</li>\r\n<li>Statistik deskriptif untuk data numeric (mean, median, standar deviasi, varians, percentile dll) dan data kategorik (proporsi/persentase)</li>\r\n<li>Penyajian data (Box Plot, Bar Diagram, Pie, Histogram, dll)</li>\r\n</ul>\r\n</ul>\r\n<p><strong>Bonus: Uji Validitas dan Reliabilitas Instrumen, durasi 1 jam</strong></p>\r\n<h3><strong>Paket In house Training</strong></h3>\r\n<p>Paket in house training ini dilakukan sesuai kebutuhan institusi atau personal. Untuk materi dan biaya akan kami ajukan melalui proposal.</p>', 'Publish', 'Layanan', 'Credibly utcost efective an expertise and web enabled proces that improvements Completely seamless channels', 'instagram-kursus-statistik-javawebmedia.png', 'fa fa-check', 2, 0, NULL, NULL, '2019-05-17 04:15:33', '2019-05-17 04:06:15', '2020-02-13 00:43:16'),
-(3, 1, 5, '', 'kursus-web-development', 'Kursus Web Development', '<h2>Materi kursus</h2>\r\n<p>Anda akan mempelajari hal-hal berikut ini:</p>\r\n<ul>\r\n<li>Dasar-dasar HTML, CSS dan Bootstrap</li>\r\n<li>Mengembangkan website profil perusahaan dengan framework Codeigniter / Laraveldan database MySQL</li>\r\n<li>Integrasi framework JavaScript dengan Codeigniter / Laravel</li>\r\n</ul>\r\n<h2><a name=\"_Toc32320298\"></a>Tujuan Kursus</h2>\r\n<p>Setelah Anda belajar&nbsp;di&nbsp;<strong>Kursus Web Development</strong>, Anda akan dapat:</p>\r\n<ul>\r\n<li>Membuat website profil perusahaan (<em>company profile</em>) dengan framework Codeigniter / Laravel dan database MySQL</li>\r\n<li>Aplikasi pendaftaran online sederhana</li>\r\n<li>Bekerja sebagai&nbsp;<strong>&nbsp;Web Programmer&nbsp;</strong>atau&nbsp;<strong>Web Developer dengan keahlian Bootstrap, HTML, CSS, JavaScript dan framework Codeigniter / Larevel.</strong></li>\r\n</ul>\r\n<h2><a name=\"_Toc32320299\"></a>Urutan materi</h2>\r\n<ol>\r\n<li>Installasi Software pendukung</li>\r\n<li>Dasar-dasar HTML, CSS dan Bootstrap</li>\r\n<li>Membuat&nbsp;<em><strong>Brief project ,&nbsp;</strong></em>yaitu merencanakan website yang akan dibuat sehingga nantinya bisa diwujudkan menjadi website sebenarnya</li>\r\n<li>Merencanakan, membuat dan mengelola database MySQL</li>\r\n<li>Integrasi template&nbsp;<em>front end&nbsp;</em>dan&nbsp;<em>back end&nbsp;</em>dengan framework Codeigniter / Laravel</li>\r\n<li>Authentication (Login, Logout &amp; Proteksi Halaman)</li>\r\n<li>CRUD&nbsp;<em>(Create, Read, Update &amp; Delete)&nbsp;</em>Dasar</li>\r\n<li>CRUD Kompleks dengan relasi database</li>\r\n<li>Laporan PDF dengan MPDF</li>\r\n<li>Security review atas aplikasi yang telah dibuat</li>\r\n<li>Upload web ke hosting atau meng-onlinekan website</li>\r\n</ol>\r\n<h2><a name=\"_Toc32320300\"></a>Software yang digunakan</h2>\r\n<p>XAMPP, Sublime Text/Notepad/Visual Studio, Browser, Aplikasi pengolah gambar, Composer dll.</p>', 'Publish', 'Layanan', 'Anda akan belajar membangun website profil perusahaan dengan menggunakan bootstrap, framework JavaScript, PHP framework Codeigniter / Laravel dan database MySQL.', 'web-development-javawebmedia11.png', 'fa fa-globe', 2, 2, NULL, NULL, '2019-05-17 04:37:00', '2019-05-17 04:36:19', '2020-02-13 00:40:58'),
-(4, 1, 5, '', 'profil-java-web-media', 'Profil Java Web Media', '<p>Java Web Media didirikan oleh Andoyo dan online pada tanggal 26 April 2010. Java Web Media awalnya hanya bergerak di bidang pembuatan dan pengembangan website serta agensi desain grafis. Awal tahun 2011, perusahaan ini kemudian mulai bergera di bidang pengembangan sumber daya manusia, khususnya di bidang keahlian computer Graphic Design, Web Design dan Web Development.</p>', 'Publish', 'Profil', '', 'BANNER_INTERNAL_ASLI-011.jpg', '', 2, 1, NULL, NULL, '2019-07-26 10:38:15', '2019-07-26 10:36:47', '2020-02-13 00:48:45'),
-(6, 1, 5, '', 'kursus-android-developer', 'Kursus Android Developer', '<p>Anda akan belajar&nbsp;membuat aplikasi Android dengan menggunakan Android Studio, Genie Motion dan software-software pendukung lainnya. Aplikasi Android yang dibuat nantinya akan support terhadap berbagai ukuran&nbsp;<em>device</em>&nbsp;dan bisa dipublikasikan di Google Play Store.</p>\r\n<p>Kursus ini diselenggarakan bekerjasama dengan&nbsp;<strong>Rumah Coding atau&nbsp;</strong><strong>Fazri Labs (www.<a href=\"https://fazrilabs.com/\">fazrilabs.com</a>)</strong></p>\r\n<h3>Level Kursus (Tingkat Kesulitan)</h3>\r\n<p>Secara umum kursus ini dibagi menjadi dua paket utama, yaitu:</p>\r\n<ul>\r\n<li>Level&nbsp;<strong><em>Beginner Class</em></strong><em><br /></em>Level ini diperuntukkan bagi yang benar-benar pemula atau baru belajar membuat aplikasi Android.</li>\r\n<li>Level&nbsp;<em><strong>Intermediate Class&nbsp;</strong></em><br />Bagi Anda yang telah memiliki dasar-dasar pembuatan aplikasi Android maka Anda dapat mengambil kelas lanjut ini.<strong><br /><br /></strong></li>\r\n</ul>\r\n<h3>Tujuan Kursus</h3>\r\n<p>Setelah Anda belajar&nbsp;di&nbsp;<em><strong>Kursus Android (Android Developer Course)</strong></em>, Anda akan dapat:</p>\r\n<ul>\r\n<li>Membuat&nbsp;aplikasi Android</li>\r\n<li>Membuat aplikasi Android untuk situs berita</li>\r\n<li>Membuat aplikasi chat realtime</li>\r\n<li>Bekerja sebagai&nbsp;<strong>Junior Mobile Developer/Programmer</strong></li>\r\n</ul>\r\n<h3>Materi untuk&nbsp;<em>Beginner Class</em></h3>\r\n<ol>\r\n<li>Activity dan layout aplikasi</li>\r\n<li>View/tampilan</li>\r\n<li>Resource</li>\r\n<li>Java dan XML</li>\r\n<li>SQLite dan shared preferences</li>\r\n<li>List view</li>\r\n<li>List adapter dan activity lifecycle</li>\r\n<li>Menu dan style</li>\r\n<li>Dialog</li>\r\n<li>Android Volley</li>\r\n</ol>\r\n<h3>Materi untuk&nbsp;<em>Intermediate</em><em>&nbsp;Class</em></h3>\r\n<ol>\r\n<li>Constraint layout</li>\r\n<li>Fragment</li>\r\n<li>Navigation drawer</li>\r\n<li>Custom Drawable</li>\r\n<li>Android Animation</li>\r\n<li>Google Maps</li>\r\n<li>Firebase Cloud Messaging</li>\r\n<li>Service and intent services</li>\r\n<li>Task schedulling</li>\r\n<li>Multil anguage</li>\r\n<li>Google analytic and ad mobs</li>\r\n<li>Unit test framework</li>\r\n</ol>', 'Publish', 'Layanan', 'Anda akan belajar membuat aplikasi Android dengan menggunakan Android Studio, Genie Motion dan software-software pendukung lainnya. Aplikasi Android yang dibuat nantinya akan support terhadap berbagai ukuran device dan bisa dipublikasikan di Google Play Store.', 'android-kursus-javawebmedia.png', 'fa fa-mobile', 0, 0, NULL, NULL, '2020-02-13 07:42:56', '2020-02-13 07:41:51', '2020-02-13 00:42:56'),
-(7, 1, 5, '', 'web-based-application', 'Web Based Application', '<p>Aplikasi bisnis berbasis web? Situs pendaftaran online untuk menunjang bisnis Anda? Kami berpengalaman dalam merencanakan &amp; mengembangkan aplikasi tersebut.</p>\r\n<h3><strong>Tujuan</strong></h3>\r\n<p>Website perusahaan dibangun sebagai:</p>\r\n<ul>\r\n<li>Otomasi proses bisnis yang bisa diakses 24 jam dengan internet</li>\r\n<li>Menyederhanakan proses pengumpulan data konsumen/customer/siswa dsb</li>\r\n<li>Sarana pengelolaan proses bisnis/usaha yang mudah dan praktis</li>\r\n</ul>\r\n<h3><strong>Fitur-fitur utama</strong></h3>\r\n<p>Website perusahaan ini menyediakan fitur-fitur sebagai berikut (disesuaikan dengan paket yang dipilih):</p>\r\n<ol>\r\n<li><strong>Fitur pendaftaran online</strong></li>\r\n<li><strong>Fitur login, logout, update profile dan transaksi bagi konsumen/customer</strong></li>\r\n<li><strong>Fitur-fitur lain yang disesuaikan dengan kebutuhan perusahaan</strong></li>\r\n<li>Modul Berita untuk mengelola dan menampilkan berita</li>\r\n<li>Modul Profil untuk mengelola dan menampilkan profil perusahaan</li>\r\n<li>Modul Staff untuk mengelola dan menampilkan data staff/personil perusahaan</li>\r\n<li>Modul Galeri untuk mengelola galeri foto dan menampilkannya</li>\r\n<li>Modul Video berfungsi untuk mempublikasikan video sebagai sarana komunikasi</li>\r\n<li>Modul Agenda/Event untuk menampilkan event-event atau agenda yang ada di perusahaan</li>\r\n<li>Modul Produk dan layanan untuk mengelola dan menampilkan produk/layanan yang dipasarkan</li>\r\n<li>Modul Kontak untuk mengelola komunikasi pelanggan/customer dengan perusahaan</li>\r\n<li>Modul SEO untuk membantu hasil pencarian di Google</li>\r\n<li>Integrasi dengan jejaring sosial yang dimiliki</li>\r\n<li>Dan fitur-fitur lainnya</li>\r\n</ol>', 'Publish', 'Berita', 'Aplikasi bisnis berbasis web? Situs pendaftaran online untuk menunjang bisnis Anda? Kami berpengalaman dalam merencanakan & mengembangkan aplikasi tersebut.', 'web-application-pendaftaran-online-javawebmedia.jpg', '', 0, 0, NULL, NULL, '2020-02-13 07:45:07', '2020-02-13 07:44:27', '2020-02-13 00:45:07');
+INSERT INTO `berita` (`id_berita`, `id_user`, `id_kategori`, `updater`, `slug_berita`, `judul_berita`, `isi`, `status_berita`, `jenis_berita`, `keywords`, `gambar`, `icon`, `hits`, `urutan`, `tanggal_mulai`, `tanggal_selesai`, `tanggal_post`, `tanggal_publish`, `tanggal`, `link`) VALUES
+(1, 1, 5, '', 'pembuatan-website-profil', 'Pembuatan Website Profil', '<h3><strong>Tujuan</strong></h3>\r\n<p>Website perusahaan dibangun sebagai:</p>\r\n<ul>\r\n<li>Sarana komunikasi resmi perusahaan dengan pelanggan</li>\r\n<li>Menyediakan informasi resmi perusahaan</li>\r\n<li>Menyajikan informasi produk dan layanan yang dimiliki</li>\r\n<li>Sebagai media pemasaran bagi perusahaan</li>\r\n</ul>\r\n<h3><strong>Fitur-fitur utama</strong></h3>\r\n<p>Website perusahaan ini menyediakan fitur-fitur sebagai berikut (disesuaikan dengan paket yang dipilih):</p>\r\n<ol>\r\n<li>Modul Berita untuk mengelola dan menampilkan berita</li>\r\n<li>Modul Profil untuk mengelola dan menampilkan profil perusahaan</li>\r\n<li>Modul Staff untuk mengelola dan menampilkan data staff/personil perusahaan</li>\r\n<li>Modul Galeri untuk mengelola galeri foto dan menampilkannya</li>\r\n<li>Modul Video berfungsi untuk mempublikasikan video sebagai sarana komunikasi</li>\r\n<li>Modul Agenda/Event untuk menampilkan event-event atau agenda yang ada di perusahaan</li>\r\n<li>Modul Produk dan layanan untuk mengelola dan menampilkan produk/layanan yang dipasarkan</li>\r\n<li>Modul Kontak untuk mengelola komunikasi pelanggan/customer dengan perusahaan</li>\r\n<li>Modul SEO untuk membantu hasil pencarian di Google</li>\r\n<li>Integrasi dengan jejaring sosial yang dimiliki</li>\r\n<li>Dan fitur-fitur lainnya</li>\r\n</ol>\r\n<h3>Paket Dasar</h3>\r\n<table class=\"table table-bordered table-stripped table-hover tiny-table\" border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">\r\n<tbody>\r\n<tr>\r\n<td>Website UKM Dasar</td>\r\n<td>Hosting 250MB<br />Bandwidth Unlimited</td>\r\n<td>Rp. 1.500.000&nbsp;<sup class=\"text-danger\">*</sup></td>\r\n</tr>\r\n<tr>\r\n<td>Website Perusahaan Kecil</td>\r\n<td>Hosting dan bandwidth unlimeted<br />Fully responsive web design</td>\r\n<td>Rp. 3.000.000&nbsp;<sup class=\"text-danger\">*</sup></td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\"><span class=\"text-danger\">* Harga dasar dengan syarat tertentu</span></td>\r\n</tr>\r\n</tbody>\r\n</table>', 'Publish', 'Berita', 'Pastikan perusahaan Anda bisa diakses secara online sehingga meningkatkan brand image perusahaan yang akhirnya meningkatkan omset usaha.', 'website-perusahaan-company-profile-web-javawebmedia11.jpg', '', 6, 0, NULL, NULL, '2019-05-13 15:51:51', '2019-05-13 15:51:36', '2022-09-18 10:22:03', NULL),
+(2, 1, 5, '', 'kursus-statistik', 'Kursus Statistik', '<p>Tujuan dari kursus ini adalah mampu melakukan manajemen dan analisis data dengan SPSS/Stata dan melakukan analisis deskriptif dan penyajian data serta intrepretasinya.</p>\r\n<p>Materi Kursus:</p>\r\n<ul>\r\n<ul>\r\n<li>Pengantar manajemen dan analisis data</li>\r\n<li>Transfer data, Entry data dan Cleaning Data</li>\r\n<li>Transformasi data (select cases, recode, split, dll)</li>\r\n<li>Statistik deskriptif untuk data numeric (mean, median, standar deviasi, varians, percentile dll) dan data kategorik (proporsi/persentase)</li>\r\n<li>Penyajian data (Box Plot, Bar Diagram, Pie, Histogram, dll)</li>\r\n</ul>\r\n</ul>\r\n<p><strong>Bonus: Uji Validitas dan Reliabilitas Instrumen, durasi 1 jam</strong></p>\r\n<h3><strong>Paket In house Training</strong></h3>\r\n<p>Paket in house training ini dilakukan sesuai kebutuhan institusi atau personal. Untuk materi dan biaya akan kami ajukan melalui proposal.</p>', 'Publish', 'Layanan', 'Credibly utcost efective an expertise and web enabled proces that improvements Completely seamless channels', 'instagram-kursus-statistik-javawebmedia.png', 'fa fa-check', 3, 0, NULL, NULL, '2019-05-17 04:15:33', '2019-05-17 04:06:15', '2022-08-31 02:23:13', NULL),
+(3, 1, 5, '', 'kursus-web-development', 'Kursus Web Development', '<h2>Materi kursus</h2>\r\n<p>Anda akan mempelajari hal-hal berikut ini:</p>\r\n<ul>\r\n<li>Dasar-dasar HTML, CSS dan Bootstrap</li>\r\n<li>Mengembangkan website profil perusahaan dengan framework Codeigniter / Laraveldan database MySQL</li>\r\n<li>Integrasi framework JavaScript dengan Codeigniter / Laravel</li>\r\n</ul>\r\n<h2><a name=\"_Toc32320298\"></a>Tujuan Kursus</h2>\r\n<p>Setelah Anda belajar&nbsp;di&nbsp;<strong>Kursus Web Development</strong>, Anda akan dapat:</p>\r\n<ul>\r\n<li>Membuat website profil perusahaan (<em>company profile</em>) dengan framework Codeigniter / Laravel dan database MySQL</li>\r\n<li>Aplikasi pendaftaran online sederhana</li>\r\n<li>Bekerja sebagai&nbsp;<strong>&nbsp;Web Programmer&nbsp;</strong>atau&nbsp;<strong>Web Developer dengan keahlian Bootstrap, HTML, CSS, JavaScript dan framework Codeigniter / Larevel.</strong></li>\r\n</ul>\r\n<h2><a name=\"_Toc32320299\"></a>Urutan materi</h2>\r\n<ol>\r\n<li>Installasi Software pendukung</li>\r\n<li>Dasar-dasar HTML, CSS dan Bootstrap</li>\r\n<li>Membuat&nbsp;<em><strong>Brief project ,&nbsp;</strong></em>yaitu merencanakan website yang akan dibuat sehingga nantinya bisa diwujudkan menjadi website sebenarnya</li>\r\n<li>Merencanakan, membuat dan mengelola database MySQL</li>\r\n<li>Integrasi template&nbsp;<em>front end&nbsp;</em>dan&nbsp;<em>back end&nbsp;</em>dengan framework Codeigniter / Laravel</li>\r\n<li>Authentication (Login, Logout &amp; Proteksi Halaman)</li>\r\n<li>CRUD&nbsp;<em>(Create, Read, Update &amp; Delete)&nbsp;</em>Dasar</li>\r\n<li>CRUD Kompleks dengan relasi database</li>\r\n<li>Laporan PDF dengan MPDF</li>\r\n<li>Security review atas aplikasi yang telah dibuat</li>\r\n<li>Upload web ke hosting atau meng-onlinekan website</li>\r\n</ol>\r\n<h2><a name=\"_Toc32320300\"></a>Software yang digunakan</h2>\r\n<p>XAMPP, Sublime Text/Notepad/Visual Studio, Browser, Aplikasi pengolah gambar, Composer dll.</p>', 'Publish', 'Layanan', 'Anda akan belajar membangun website profil perusahaan dengan menggunakan bootstrap, framework JavaScript, PHP framework Codeigniter / Laravel dan database MySQL.', 'web-development-javawebmedia11.png', 'fa fa-globe', 2, 2, NULL, NULL, '2019-05-17 04:37:00', '2019-05-17 04:36:19', '2020-02-13 00:40:58', NULL),
+(4, 4, 9, '', 'profil-cv-galang-media-buana', 'Profil Cv. Galang Media Buana', '<p>Berdiri pada tanggal 15 Desember 2015, CV. Galang Media Buana awalnya hanya sebagai distributor Buku Pelajaran dan Bahan Peraga Sekolah. Namun seiring berjalannya waktu, kini GMB memilih berkomitmen untuk menjadi Penerbit Buku yang berkualitas dan berkarakter dengan melibatkan para penulis dari guru-guru berprestasi yang sudah diakui di bidangnya.</p>\r\n<p>&nbsp;</p>\r\n<p>Melalui pasar awal hanya mencakup di wilayah Jakarta Selatan 1, yaitu Kecamatan Pesanggrahan, Kecamatan Jagakarsa, Kecamatan Cilandak dan Kecamatan Kebayoran Lama, namun kini sudah tersebar di beberapa Provinsi di Indonesia seperti beberapa wilayah di Provinsi DKI Jakarta, Nusa Tenggara Timur, Nusa Tenggara Barat, Jawa Tengah, Jawa Timur, Jawa Barat, Kalimantan Selatan, Batam dan juga Banten. Dengan personel awal hanya terdiri dari 1 Direktur, 1 Admin, 1 Kurir dan 1 Staff Gudang, namun dengan komitmen dan kesungguhan GMB dalam memajukan pendidikan di Indonesia, kini sudah berhasil merekrut puluhan anak-anak fresh graduated dalam membantu kinerja.</p>\r\n<p>&nbsp;</p>\r\n<p>Buku pertama yang kami terbitkan adalah <strong>Buku Practice For The Best USBN SD/MI </strong>Tahun 2019 yang dimana buku tersebut menjadi buku best seller di pasaran karena menjadi acuan lengkap untuk adik-adik tingkat akhir dalam menghadapi persiapan USBN. Namun tidak hanya menyiapkan dalam bentuk buku saja, tetapi juga dilengkapi dengan program penilaian Try Out yang menggunakan soal-soal pilihan sebagai latihan dalam menghadapi USBN dengan siap dan juga maksimal. Disertai juga dengan koreksi menggunakan mesin scanner yang dijamin akurat yang dioperasikan oleh tim koreksi yang terpilih, untuk mengetahui nilai dan juga peringkat siswa maupun sekolah.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>Saat ini GMB sudah menerbitkan puluhan buku untuk kategori SD dan juga SMP, dengan kualitas terbaik yang bisa ditandingi dengan penerbit lainnya yang sudah bertaraf nasional. Namun hal itu tidak pernah menjadikan kami takut dengan para pesaing, karena sudah terbukti adanya pengakuan dari para rekanan sekolah dan juga pelanggan akan kualitas buku yang kami terbitkan.</p>', 'Publish', 'Profil', '', 'BANNER_INTERNAL_ASLI-011.jpg', '', 4, 1, NULL, NULL, '2019-07-26 10:38:15', '2019-07-26 10:36:47', '2022-09-18 11:29:29', ''),
+(6, 4, 5, '', 'kursus-android-developer', 'Kursus Android Developer', '<p>Anda akan belajar&nbsp;membuat aplikasi Android dengan menggunakan Android Studio, Genie Motion dan software-software pendukung lainnya. Aplikasi Android yang dibuat nantinya akan support terhadap berbagai ukuran&nbsp;<em>device</em>&nbsp;dan bisa dipublikasikan di Google Play Store.</p>\r\n<p style=\"text-align: center;\">Kursus ini diselenggarakan bekerjasama dengan&nbsp;<strong>Rumah Coding atau&nbsp;</strong><strong>Fazri Labs (www.<a href=\"https://fazrilabs.com/\">fazrilabs.com</a>)</strong></p>\r\n<h3>Level Kursus (Tingkat Kesulitan)</h3>\r\n<p>Secara umum kursus ini dibagi menjadi dua paket utama, yaitu:</p>\r\n<ul>\r\n<li>Level&nbsp;<strong><em>Beginner Class</em></strong><em><br /></em>Level ini diperuntukkan bagi yang benar-benar pemula atau baru belajar membuat aplikasi Android.</li>\r\n<li>Level&nbsp;<em><strong>Intermediate Class&nbsp;</strong></em><br />Bagi Anda yang telah memiliki dasar-dasar pembuatan aplikasi Android maka Anda dapat mengambil kelas lanjut ini.<strong><br /><br /></strong></li>\r\n</ul>\r\n<h3>Tujuan Kursus</h3>\r\n<p>Setelah Anda belajar&nbsp;di&nbsp;<em><strong>Kursus Android (Android Developer Course)</strong></em>, Anda akan dapat:</p>\r\n<ul>\r\n<li>Membuat&nbsp;aplikasi Android</li>\r\n<li>Membuat aplikasi Android untuk situs berita</li>\r\n<li>Membuat aplikasi chat realtime</li>\r\n<li>Bekerja sebagai&nbsp;<strong>Junior Mobile Developer/Programmer</strong></li>\r\n</ul>\r\n<h3>Materi untuk&nbsp;<em>Beginner Class</em></h3>\r\n<ol>\r\n<li>Activity dan layout aplikasi</li>\r\n<li>View/tampilan</li>\r\n<li>Resource</li>\r\n<li>Java dan XML</li>\r\n<li>SQLite dan shared preferences</li>\r\n<li>List view</li>\r\n<li>List adapter dan activity lifecycle</li>\r\n<li>Menu dan style</li>\r\n<li>Dialog</li>\r\n<li>Android Volley</li>\r\n</ol>\r\n<h3>Materi untuk&nbsp;<em>Intermediate</em><em>&nbsp;Class</em></h3>\r\n<ol>\r\n<li>Constraint layout</li>\r\n<li>Fragment</li>\r\n<li>Navigation drawer</li>\r\n<li>Custom Drawable</li>\r\n<li>Android Animation</li>\r\n<li>Google Maps</li>\r\n<li>Firebase Cloud Messaging</li>\r\n<li>Service and intent services</li>\r\n<li>Task schedulling</li>\r\n<li>Multil anguage</li>\r\n<li>Google analytic and ad mobs</li>\r\n<li>Unit test framework</li>\r\n</ol>', 'Publish', 'Layanan', 'Anda akan belajar membuat aplikasi Android dengan menggunakan Android Studio, Genie Motion dan software-software pendukung lainnya. Aplikasi Android yang dibuat nantinya akan support terhadap berbagai ukuran device dan bisa dipublikasikan di Google Play Store.', 'android-kursus-javawebmedia.png', 'fa fa-mobile', 4, 0, NULL, NULL, '2020-02-13 07:42:56', '2020-02-13 07:41:51', '2022-09-10 10:01:14', NULL),
+(7, 4, 5, '', 'web-based-application', 'Web Based Application', '<p>Aplikasi bisnis berbasis web? Situs pendaftaran online untuk menunjang bisnis Anda? Kami berpengalaman dalam merencanakan &amp; mengembangkan aplikasi tersebut.</p>\r\n<h3><strong>Tujuan</strong></h3>\r\n<p>Website perusahaan dibangun sebagai:</p>\r\n<ul>\r\n<li>Otomasi proses bisnis yang bisa diakses 24 jam dengan internet</li>\r\n<li>Menyederhanakan proses pengumpulan data konsumen/customer/siswa dsb</li>\r\n<li>Sarana pengelolaan proses bisnis/usaha yang mudah dan praktis</li>\r\n</ul>\r\n<h3><strong>Fitur-fitur utama</strong></h3>\r\n<p>Website perusahaan ini menyediakan fitur-fitur sebagai berikut (disesuaikan dengan paket yang dipilih):</p>\r\n<ol>\r\n<li><strong>Fitur pendaftaran online</strong></li>\r\n<li><strong>Fitur login, logout, update profile dan transaksi bagi konsumen/customer</strong></li>\r\n<li><strong>Fitur-fitur lain yang disesuaikan dengan kebutuhan perusahaan</strong></li>\r\n<li>Modul Berita untuk mengelola dan menampilkan berita</li>\r\n<li>Modul Profil untuk mengelola dan menampilkan profil perusahaan</li>\r\n<li>Modul Staff untuk mengelola dan menampilkan data staff/personil perusahaan</li>\r\n<li>Modul Galeri untuk mengelola galeri foto dan menampilkannya</li>\r\n<li>Modul Video berfungsi untuk mempublikasikan video sebagai sarana komunikasi</li>\r\n<li>Modul Agenda/Event untuk menampilkan event-event atau agenda yang ada di perusahaan</li>\r\n<li>Modul Produk dan layanan untuk mengelola dan menampilkan produk/layanan yang dipasarkan</li>\r\n<li>Modul Kontak untuk mengelola komunikasi pelanggan/customer dengan perusahaan</li>\r\n<li>Modul SEO untuk membantu hasil pencarian di Google</li>\r\n<li>Integrasi dengan jejaring sosial yang dimiliki</li>\r\n<li>Dan fitur-fitur lainnya</li>\r\n</ol>', 'Publish', 'Berita', 'Aplikasi bisnis berbasis web? Situs pendaftaran online untuk menunjang bisnis Anda? Kami berpengalaman dalam merencanakan & mengembangkan aplikasi tersebut.', 'web-application-pendaftaran-online-javawebmedia.jpg', '', 11, 0, NULL, NULL, '2020-02-13 07:45:07', '2020-02-13 07:44:27', '2022-09-20 02:46:10', NULL),
+(10, 4, 8, '', 'buku-belajar-2', 'BUKU BELAJAR 2', '<p style=\"text-align: left;\"><strong>Harga : 68.500</strong></p>\r\n<p style=\"text-align: left;\">Editor : M. Said</p>\r\n<p style=\"text-align: left;\"><strong>SPESIFIKASI : </strong></p>\r\n<p style=\"text-align: left;\">Judul &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Sukses AKM Nasional SD/MI 2021</p>\r\n<p style=\"text-align: left;\">ISBN &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 978-623-93921-4-7</p>\r\n<p style=\"text-align: left;\">Penulis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</p>\r\n<ul style=\"text-align: left;\">\r\n<li><strong><em>Penulis Literasi :</em></strong></li>\r\n</ul>\r\n<ol style=\"text-align: left;\">\r\n<li>Tatang</li>\r\n<li>Yunita Kwartarani</li>\r\n<li>Halimahtussadiah</li>\r\n<li>Puguh</li>\r\n</ol>\r\n<ul style=\"text-align: left;\">\r\n<li><strong><em>Penulis Numerasi</em></strong></li>\r\n</ul>\r\n<ol style=\"text-align: left;\">\r\n<li>Yulia Suci Rejeki</li>\r\n<li>Alimul Hakim</li>\r\n<li>Maman Suarman</li>\r\n<li>Purwani Handayani</li>\r\n</ol>\r\n<p style=\"text-align: left;\">Jumlah Halaman&nbsp; : 204 Halaman</p>\r\n<p style=\"text-align: left;\">Ukuran Buku&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 20,5 cm x 28 cm</p>\r\n<p style=\"text-align: left;\">Isi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Kertas HVS 70 Gr</p>\r\n<p style=\"text-align: left;\">Cover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Kertas AP 210 Gr</p>\r\n<p style=\"text-align: left;\">Warna Cover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Sparasi</p>\r\n<p style=\"text-align: left;\">Jilid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Blok Lem</p>', 'Publish', 'Produk', 'sxsxs', 'BOLLORE,_BMKG_-_PEKANBARU_003.jpg', 'hehehe', 0, 2, NULL, NULL, '2022-09-17 19:46:30', '2022-09-17 19:45:52', '2022-09-18 11:07:20', 'https://siplah.blibli.com/product/buku-sukses-akm-smp-mts-literasi-membaca-kelas-vii-zona-4/SCGM-0043-00060'),
+(9, 4, 7, '', 'buku-belajar-1', 'BUKU BELAJAR 1', '<h2>What is Lorem Ipsum?</h2>\r\n<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 'Publish', 'Produk', 'buku baru', 'debit-bca-green-logo-D8EE725387-seeklogo_com.png', '-', 3, 1, NULL, NULL, '2022-09-10 17:21:30', '2022-09-10 17:12:08', '2022-09-17 11:28:46', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `client`
+-- Struktur dari tabel `client`
 --
 
 CREATE TABLE `client` (
@@ -148,17 +141,17 @@ CREATE TABLE `client` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `client`
+-- Dumping data untuk tabel `client`
 --
 
 INSERT INTO `client` (`id_client`, `id_user`, `jenis_client`, `nama`, `pimpinan`, `alamat`, `telepon`, `website`, `email`, `password`, `password_hint`, `isi`, `status_testimoni`, `isi_testimoni`, `gambar`, `status_client`, `keywords`, `status_baca`, `status_siswa`, `ip_address`, `tempat_lahir`, `tanggal_lahir`, `tanggal`) VALUES
 (2, 1, 'Perorangan', 'PT Java Web Media', 'Bapak Andoyo', 'Jalan Lapangan Banteng Barat No. 3-4\r\nTromol Pos 3500', '', '', 'javawebmedia@gmail.com', '8242de3f241790a591666ac9f6ad6be377c8a43f', 'wrygldyt', NULL, 'No', '', NULL, 'No', '', 'Sudah', 'Aktif', '', 'JAKARTA', '1962-01-02', '2019-04-14 01:08:26'),
-(3, 1, 'Perorangan', 'PT Indosat Sukses  Makmur', 'Eflita Meiyetriani', '', '0813 8841 0829', '', 'admin@kabupatenlestari.org', NULL, NULL, NULL, 'No', '', NULL, 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2019-04-14 03:35:03');
+(3, 4, 'Perorangan', 'PT Indosat Sukses  Makmur', 'Eflita Meiyetriani', '', '0813 8841 0829', '', 'admin@kabupatenlestari.org', '8b297e9ca31240c7749f1e39d42893ef38ac99d6', 'vbjdoksa', NULL, 'No', '', NULL, 'No', '', 'Sudah', 'Aktif', '', '', '1970-01-01', '2022-08-27 09:18:57');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `download`
+-- Struktur dari tabel `download`
 --
 
 CREATE TABLE `download` (
@@ -175,7 +168,7 @@ CREATE TABLE `download` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `download`
+-- Dumping data untuk tabel `download`
 --
 
 INSERT INTO `download` (`id_download`, `id_kategori_download`, `id_user`, `judul_download`, `jenis_download`, `isi`, `gambar`, `website`, `hits`, `tanggal`) VALUES
@@ -186,7 +179,47 @@ INSERT INTO `download` (`id_download`, `id_kategori_download`, `id_user`, `judul
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galeri`
+-- Struktur dari tabel `email_pesan`
+--
+
+CREATE TABLE `email_pesan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `pesan` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `email_pesan`
+--
+
+INSERT INTO `email_pesan` (`id`, `nama`, `email`, `pesan`) VALUES
+(1, 'coba aja', 'normanardian24@gmail.com', NULL),
+(2, 'xsxsxs', 'normanardian25@gmail.com', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `email_subscribe`
+--
+
+CREATE TABLE `email_subscribe` (
+  `id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `email_subscribe`
+--
+
+INSERT INTO `email_subscribe` (`id`, `email`) VALUES
+(1, 'normanardian24@gmail.com'),
+(2, 'normanardian25@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `galeri`
 --
 
 CREATE TABLE `galeri` (
@@ -202,26 +235,23 @@ CREATE TABLE `galeri` (
   `popup_status` enum('Publish','Draft','','') NOT NULL,
   `urutan` int(11) DEFAULT NULL,
   `status_text` enum('Ya','Tidak','','') NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tanggal_publish` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `galeri`
+-- Dumping data untuk tabel `galeri`
 --
 
-INSERT INTO `galeri` (`id_galeri`, `id_kategori_galeri`, `id_user`, `judul_galeri`, `jenis_galeri`, `isi`, `gambar`, `website`, `hits`, `popup_status`, `urutan`, `status_text`, `tanggal`) VALUES
-(4, 5, 1, 'Kursus di Java Web Media', 'Homepage', '<p>Kursus di Java Web Media</p>', 'website.jpg', 'http://javawebmedia.com', NULL, 'Publish', 1, 'Ya', '2020-02-13 00:33:12'),
-(5, 5, 1, 'Kursus Codeigniter di Java Web Media', 'Homepage', '<p>Kursus Codeigniter di Java Web Media</p>', 'BANNER_INTERNAL_ASLI-01.jpg', 'https://javawebmedia.com', NULL, 'Publish', 1, 'Ya', '2020-02-13 00:34:11'),
-(6, 5, 1, 'Kursus Statistik di Java Web Media', 'Homepage', '<p>Kursus Statistik di Java Web Media</p>', 'website-perusahaan-company-profile-web-javawebmedia1.jpg', 'http://javawebmedia.com', NULL, 'Publish', 1, 'Ya', '2020-02-13 00:34:41'),
-(7, 5, 1, 'Kursus Web Development Java Web Media', 'Galeri', '<p>Kursus Web Development Java Web Media</p>', 'web-development-javawebmedia1.png', '', NULL, 'Publish', 0, 'Ya', '2020-02-13 00:52:02'),
-(8, 5, 1, 'Web Application Java Web Media', 'Galeri', '<p>Web Application Java Web Media</p>', 'web-application-pendaftaran-online-javawebmedia1.jpg', '', NULL, 'Publish', 0, 'Ya', '2020-02-13 00:52:18'),
-(9, 5, 1, 'Kursus Statistik di Java Web Media', 'Galeri', '<p>Kursus Statistik di Java Web Media</p>', 'instagram-kursus-statistik-javawebmedia1.png', '', NULL, 'Publish', 0, 'Ya', '2020-02-13 00:53:55'),
-(10, 5, 1, 'Web Development Java Web Media', 'Galeri', '<p>Web Development Java Web Media</p>', 'website-perusahaan-company-profile-web-javawebmedia12.jpg', '', NULL, 'Publish', 0, 'Ya', '2020-02-13 00:54:28');
+INSERT INTO `galeri` (`id_galeri`, `id_kategori_galeri`, `id_user`, `judul_galeri`, `jenis_galeri`, `isi`, `gambar`, `website`, `hits`, `popup_status`, `urutan`, `status_text`, `tanggal`, `tanggal_publish`) VALUES
+(4, 5, 4, 'Galang media buana', 'Homepage', '<p>Galang media buana</p>', 'website.jpg', 'http://galangmediabuana.com', 2, 'Publish', 1, 'Ya', '2022-09-19 04:33:05', '2022-09-19'),
+(12, 6, 4, 'jalan', 'Galeri', '<p>dkncskcnsk</p>', 'Picture1.png', '', NULL, 'Publish', 2, 'Ya', '2022-09-18 09:22:09', '2021-09-18'),
+(11, 4, 4, 'hxjahsbxkjsan', 'Galeri', '<p>mc s m,z cx</p>', 'BOLLORE,_BMKG-_SUB__002.jpg', '', NULL, 'Publish', 1, 'Tidak', '2022-09-18 08:33:48', '2022-09-19');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -235,17 +265,20 @@ CREATE TABLE `kategori` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kategori`
+-- Dumping data untuk tabel `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `id_user`, `slug_kategori`, `nama_kategori`, `urutan`, `hits`, `tanggal`) VALUES
 (4, 1, 'penelitian', 'Penelitian', 4, 0, '2019-03-04 01:31:22'),
-(5, 1, 'kegiatan', 'Kegiatan', 5, 0, '2019-03-04 01:31:06');
+(5, 1, 'kegiatan', 'Kegiatan', 5, 0, '2019-03-04 01:31:06'),
+(8, 4, 'smp', 'SMP', 2, 0, '2022-09-17 12:46:59'),
+(7, 4, 'sd', 'SD', 1, 0, '2022-09-17 11:25:41'),
+(9, 4, 'profil', 'Profil', 0, 0, '2022-09-18 11:26:41');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori_download`
+-- Struktur dari tabel `kategori_download`
 --
 
 CREATE TABLE `kategori_download` (
@@ -256,7 +289,7 @@ CREATE TABLE `kategori_download` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kategori_download`
+-- Dumping data untuk tabel `kategori_download`
 --
 
 INSERT INTO `kategori_download` (`id_kategori_download`, `slug_kategori_download`, `nama_kategori_download`, `urutan`) VALUES
@@ -266,7 +299,7 @@ INSERT INTO `kategori_download` (`id_kategori_download`, `slug_kategori_download
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori_galeri`
+-- Struktur dari tabel `kategori_galeri`
 --
 
 CREATE TABLE `kategori_galeri` (
@@ -277,17 +310,18 @@ CREATE TABLE `kategori_galeri` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kategori_galeri`
+-- Dumping data untuk tabel `kategori_galeri`
 --
 
 INSERT INTO `kategori_galeri` (`id_kategori_galeri`, `slug_kategori_galeri`, `nama_kategori_galeri`, `urutan`) VALUES
 (4, 'kegiatan', 'Kegiatan', 4),
-(5, 'banner-website', 'Banner Website', 4);
+(5, 'banner-website', 'Banner Website', 4),
+(6, 'jalan-jalan-bali', 'Jalan Jalan bali', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori_staff`
+-- Struktur dari tabel `kategori_staff`
 --
 
 CREATE TABLE `kategori_staff` (
@@ -298,7 +332,7 @@ CREATE TABLE `kategori_staff` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kategori_staff`
+-- Dumping data untuk tabel `kategori_staff`
 --
 
 INSERT INTO `kategori_staff` (`id_kategori_staff`, `slug_kategori_staff`, `nama_kategori_staff`, `urutan`) VALUES
@@ -308,7 +342,7 @@ INSERT INTO `kategori_staff` (`id_kategori_staff`, `slug_kategori_staff`, `nama_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `konfigurasi`
+-- Struktur dari tabel `konfigurasi`
 --
 
 CREATE TABLE `konfigurasi` (
@@ -380,16 +414,16 @@ CREATE TABLE `konfigurasi` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `konfigurasi`
+-- Dumping data untuk tabel `konfigurasi`
 --
 
 INSERT INTO `konfigurasi` (`id_konfigurasi`, `namaweb`, `singkatan`, `tagline`, `tentang`, `deskripsi`, `website`, `email`, `email_cadangan`, `alamat`, `telepon`, `hp`, `fax`, `logo`, `icon`, `footer`, `keywords`, `metatext`, `facebook`, `twitter`, `instagram`, `google_plus`, `google_map`, `judul_1`, `pesan_1`, `judul_2`, `pesan_2`, `judul_3`, `pesan_3`, `judul_4`, `pesan_4`, `judul_5`, `pesan_5`, `judul_6`, `pesan_6`, `isi_1`, `isi_2`, `isi_3`, `isi_4`, `isi_5`, `isi_6`, `link_1`, `link_2`, `link_3`, `link_4`, `link_5`, `link_6`, `javawebmedia`, `gambar`, `video`, `rekening`, `gambar_berita`, `status_form_booking`, `max_room_booking`, `nama_direktur`, `jabatan`, `stempel_tanda_tangan`, `protocol`, `smtp_host`, `smtp_port`, `smtp_timeout`, `smtp_user`, `smtp_pass`, `id_user`, `tanggal`) VALUES
-(1, 'Java Web Media', 'Pusat Kursus Private Web Programming, Mobile Programming, Graphic Design dan Statistik', 'CV Java Web Media', '<p>Java Web Media adalah Pusat Kursus Private dan Reguler bidang Desain Grafis, Web Programming, Mobile Application dan Statistik</p>', 'Hotel Bumi Wiyata is a three stars hotel that located on Jl. Margonda Raya Depok 16423 West Java.Â \r\n\r\nHotel Bumi Wiyata has 13 ha areas and 91 Rooms which divided into six types of room; Standard Room, Superior Room, Deluxe Superior Room, Suite Room, Deluxe Suite Room & Executive Room.\r\n\r\nHotel Bumi Wiyata is the perfect choice for your business activity, gathering, wedding, outbound and family. With the concept of the greatest hotel for recreational meeting surrounding with traditional nature, various facilities and warm hospitality will makes all your event become a memorable one.', 'http://javawebmedia.com', 'contact@javawebmedia.co.id', 'bmwiyata@hotelbumiwiyata.com', '<p><strong>Java Web Media</strong><br />MALL DEPOK TOWN SQUARE<br />Lantai 2 Unit SS No. 5-7<br />(Samping Gerai Samsung)<br />Jl. Margonda Raya No 1<br />Kemiri Muka, Kecamatan Beji, Kota Depok, Jawa Barat 16424<br />Telepon: 085715100485<br />Whatsapp: +6281210697841<br />Email: contact@javawebmedia.co.id</p>', '+6285715100485', '+6281210697841', '+6285715100485', 'logo-java-web-media-01-01.png', 'icon-javawebmedia-2019.png', 'footer1.png', 'Java Web Media adalah Pusat Kursus Private dan Reguler bidang Desain Grafis, Web Programming, Mobile Application dan Statistik\r\n', '', 'https://www.facebook.com/javawebmedia', 'http://twitter.com/javawebmedia', 'https://instagram.com/javawebmedia', 'https://www.youtube.com/channel/UCmm6mFZXYQ3ZylUMa0Tmc2Q', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1145209004862!2d106.82752101476999!3d-6.379215695384046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec0869e31b4f%3A0xaa40278d69385917!2sHotel+Bumi+Wiyata!5e0!3m2!1sid!2sid!4v1532643481549\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', 'Bersedekah untuk anak yatim', 'fa-money', 'Pengasuh yang santun', 'fa-thumbs-up', 'Jadwal Flexibel', 'fa-adn', 'Menjaga Amanah', 'fa-check-square-o', 'Tempat belajar nyaman', 'fa-home', 'Online service', 'fa-laptop', 'Berbagi kebahagiaan dengan anak yatim adalah perintah Allah dan rasul', 'Pengasuh yang baik dan santun serta memberikan teladan yang baik bagi anak asuh', 'Bagi Anda siswa yang ingin belajar, kami menerapkan jadwal flexibel', 'Kami senantiasa menjaga amanah yang diberikan kepada donatur agar sampai di tangan yang berhak.', 'Kami menyediakan tempat belajar yang nyaman dan menyenangkan', 'Website kamu selalu uptodate, Anda bisa mengunduh apa yang dipelajari', '', '', '', '', '', '', '<p>Berawal dari keinginan ibunda Hj.Masah Muhari diakhir hidupnya untuk mewakaan sebagian hartanya dijalan Allah, gayungpun bersambut pada bulan Mei 2011 saat kami akan melaksanakan ibadah umrah, Seorang rekan kami sesama Jamaah bernama ustadzah Hj. Zainur Fahmid memberikan informasi Tentang Anggota yang hendak mewakaan sebidang tanahnya di wilayah Beji Timur. Kami pun memanjatkan doa di kota suci dengan penuh rasa harap pertolongan Allah untuk menunjukan jalan terbaik-Nya, maka sepulang umroh kami mengadakan pertemuan di kediaman Ibu Dra Hj Ratna Mardjanah untuk membicarakan visi misi kami dalam wakaf tersebut dan sepakat untuk mendirikan Istana Yatim Riyadhul Jannah ini.</p>\r\n<p>Nama Riyadhul Jannah Sendiri diambil dari nama pengelola wakaf (H. Ahmad Riyadh Muchtar, Lc) dan pemberi wakaf (Dra Hj Ratna Mardjanah). Istana Yatim Riyadhul Jannah hadir untuk melayani dan memfasilitasi segala kebutuhan anak yatim, terutama pendidikan agama, akhlak dan kehidupan yang layak untuk bekal masa depan mereka yang cerah agar bisa memberi manfaat bagi umat. Harapan kami semoga dengan membangunkan istana untuk anak yatim, maka Allah akan berikan istana-Nya di surga kelak dan kita termasuk manusia yang bisa memberika manfaat bagi sesama sebagaimana sabda Rasulullah SAW yang artinya:&nbsp;</p>\r\n<p>&ldquo;Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lainnya&rdquo;&nbsp;</p>\r\n<p>erimakasih atas segala bentuk bantuan yang dipercayakan kepada kami baik secara materi, tenaga dan kiran serta doa para muhsinin dan muhsinat Istana Yatim Riyadhul Jannah selama ini, mulai dari rencana pendirian hingga berkembang seperti saat ini. Semoga segala amal menjadi shadaqah jariyah disisi-Nya.&nbsp;</p>\r\n<p>&nbsp;</p>', 'istana-yatim.png', 'fsH_KhUWfho', '<table id=\"dataTables-example\" class=\"table table-bordered\" width=\"100%\">\r\n<thead>\r\n<tr>\r\n<th tabindex=\"0\" colspan=\"1\" rowspan=\"1\" width=\"19%\">Nama Bank</th>\r\n<th tabindex=\"0\" colspan=\"1\" rowspan=\"1\" width=\"21%\">Nomor Rekening</th>\r\n<th tabindex=\"0\" colspan=\"1\" rowspan=\"1\" width=\"7%\">Atas nama</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>BCA KCP Margo City</td>\r\n<td>4212548204</td>\r\n<td>Andoyo</td>\r\n</tr>\r\n<tr>\r\n<td>Bank Mandiri KCP Universitas Indonesia</td>\r\n<td>1570001807768</td>\r\n<td>Eflita Meiyetriani</td>\r\n</tr>\r\n<tr>\r\n<td>Bank BNI Syariah Kantor Cabang Jakarta Selatan</td>\r\n<td>0105301001</td>\r\n<td>Eflita Meiyetriani</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'balairung-budiutomo-01.jpg', 'Aktif', 3, 'Sigit Yuwono Wachid', 'Direktur', 'tanda-tangan-nba.png', 'smtp', 'ssl://mail.websitemu.com', 465, 7, 'contact@websitemu.com', 'muhammad', 0, '2020-02-13 00:55:20');
+(1, 'CV. Galang Media Buana', 'GMB', 'CV Galang Media Buana', '<p>CV Galang Media Buana Percetakan Buku</p>', 'Hotel Bumi Wiyata is a three stars hotel that located on Jl. Margonda Raya Depok 16423 West Java.Â \r\n\r\nHotel Bumi Wiyata has 13 ha areas and 91 Rooms which divided into six types of room; Standard Room, Superior Room, Deluxe Superior Room, Suite Room, Deluxe Suite Room & Executive Room.\r\n\r\nHotel Bumi Wiyata is the perfect choice for your business activity, gathering, wedding, outbound and family. With the concept of the greatest hotel for recreational meeting surrounding with traditional nature, various facilities and warm hospitality will makes all your event become a memorable one.', 'http://galangmediabuana.com', 'contact@galangmediabuana.com', 'bmwiyata@hotelbumiwiyata.com', '<p>Jl. Mirah Raya No.103, Sawah Baru, Kec. Ciputat, Kota Tangerang Selatan, Banten 15413</p>', '+6285697780467', '+6285697780467', '+6285715100485', 'logo_GMB_ok.png', 'logo_GMB_ok1.png', 'footer1.png', 'Cv galang media adalah sebuah percetakan buku untuk buku pelajaran\r\n', '', '', '', '', 'https://www.youtube.com/channel/UCmm6mFZXYQ3ZylUMa0Tmc2Q', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7430903154036!2d106.7181506141943!3d-6.297452763386052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb11d82cc4fb%3A0xcf9f83b128d17c62!2sCV.%20GALANG%20MEDIA%20BUANA!5e0!3m2!1sid!2sid!4v1663502455684!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'Bersedekah untuk anak yatim', 'fa-money', 'Pengasuh yang santun', 'fa-thumbs-up', 'Jadwal Flexibel', 'fa-adn', 'Menjaga Amanah', 'fa-check-square-o', 'Tempat belajar nyaman', 'fa-home', 'Online service', 'fa-laptop', 'Berbagi kebahagiaan dengan anak yatim adalah perintah Allah dan rasul', 'Pengasuh yang baik dan santun serta memberikan teladan yang baik bagi anak asuh', 'Bagi Anda siswa yang ingin belajar, kami menerapkan jadwal flexibel', 'Kami senantiasa menjaga amanah yang diberikan kepada donatur agar sampai di tangan yang berhak.', 'Kami menyediakan tempat belajar yang nyaman dan menyenangkan', 'Website kamu selalu uptodate, Anda bisa mengunduh apa yang dipelajari', '', '', '', '', '', '', '<p>Berawal dari keinginan ibunda Hj.Masah Muhari diakhir hidupnya untuk mewakaan sebagian hartanya dijalan Allah, gayungpun bersambut pada bulan Mei 2011 saat kami akan melaksanakan ibadah umrah, Seorang rekan kami sesama Jamaah bernama ustadzah Hj. Zainur Fahmid memberikan informasi Tentang Anggota yang hendak mewakaan sebidang tanahnya di wilayah Beji Timur. Kami pun memanjatkan doa di kota suci dengan penuh rasa harap pertolongan Allah untuk menunjukan jalan terbaik-Nya, maka sepulang umroh kami mengadakan pertemuan di kediaman Ibu Dra Hj Ratna Mardjanah untuk membicarakan visi misi kami dalam wakaf tersebut dan sepakat untuk mendirikan Istana Yatim Riyadhul Jannah ini.</p>\r\n<p>Nama Riyadhul Jannah Sendiri diambil dari nama pengelola wakaf (H. Ahmad Riyadh Muchtar, Lc) dan pemberi wakaf (Dra Hj Ratna Mardjanah). Istana Yatim Riyadhul Jannah hadir untuk melayani dan memfasilitasi segala kebutuhan anak yatim, terutama pendidikan agama, akhlak dan kehidupan yang layak untuk bekal masa depan mereka yang cerah agar bisa memberi manfaat bagi umat. Harapan kami semoga dengan membangunkan istana untuk anak yatim, maka Allah akan berikan istana-Nya di surga kelak dan kita termasuk manusia yang bisa memberika manfaat bagi sesama sebagaimana sabda Rasulullah SAW yang artinya:&nbsp;</p>\r\n<p>&ldquo;Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lainnya&rdquo;&nbsp;</p>\r\n<p>erimakasih atas segala bentuk bantuan yang dipercayakan kepada kami baik secara materi, tenaga dan kiran serta doa para muhsinin dan muhsinat Istana Yatim Riyadhul Jannah selama ini, mulai dari rencana pendirian hingga berkembang seperti saat ini. Semoga segala amal menjadi shadaqah jariyah disisi-Nya.&nbsp;</p>\r\n<p>&nbsp;</p>', 'istana-yatim.png', 'fsH_KhUWfho', '<table id=\"dataTables-example\" class=\"table table-bordered\" width=\"100%\">\r\n<thead>\r\n<tr>\r\n<th tabindex=\"0\" colspan=\"1\" rowspan=\"1\" width=\"19%\">Nama Bank</th>\r\n<th tabindex=\"0\" colspan=\"1\" rowspan=\"1\" width=\"21%\">Nomor Rekening</th>\r\n<th tabindex=\"0\" colspan=\"1\" rowspan=\"1\" width=\"7%\">Atas nama</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>BCA KCP Margo City</td>\r\n<td>4212548204</td>\r\n<td>Andoyo</td>\r\n</tr>\r\n<tr>\r\n<td>Bank Mandiri KCP Universitas Indonesia</td>\r\n<td>1570001807768</td>\r\n<td>Eflita Meiyetriani</td>\r\n</tr>\r\n<tr>\r\n<td>Bank BNI Syariah Kantor Cabang Jakarta Selatan</td>\r\n<td>0105301001</td>\r\n<td>Eflita Meiyetriani</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'balairung-budiutomo-01.jpg', 'Aktif', 3, 'Sigit Yuwono Wachid', 'Direktur', 'tanda-tangan-nba.png', 'smtp', 'ssl://mail.websitemu.com', 465, 7, 'contact@websitemu.com', 'muhammad', 0, '2022-09-19 04:32:06');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kunjungan`
+-- Struktur dari tabel `kunjungan`
 --
 
 CREATE TABLE `kunjungan` (
@@ -402,7 +436,7 @@ CREATE TABLE `kunjungan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kunjungan`
+-- Dumping data untuk tabel `kunjungan`
 --
 
 INSERT INTO `kunjungan` (`id_kunjungan`, `alamat`, `ip_address`, `hari`, `waktu`, `tanggal`) VALUES
@@ -986,12 +1020,693 @@ INSERT INTO `kunjungan` (`id_kunjungan`, `alamat`, `ip_address`, `hari`, `waktu`
 (577, 'http://localhost/compro/galeri', '::1', '2020-02-13', '2020-02-13 07:54:31', '2020-02-13 00:54:31'),
 (578, 'http://localhost/compro/kontak', '::1', '2020-02-13', '2020-02-13 07:54:40', '2020-02-13 00:54:40'),
 (579, 'http://localhost/compro/kontak', '::1', '2020-02-13', '2020-02-13 07:55:23', '2020-02-13 00:55:23'),
-(580, 'http://localhost/compro/index.php', '::1', '2020-02-13', '2020-02-13 07:55:36', '2020-02-13 00:55:36');
+(580, 'http://localhost/compro/index.php', '::1', '2020-02-13', '2020-02-13 07:55:36', '2020-02-13 00:55:36'),
+(581, 'http://localhost/compro-buana/index.php', '::1', '2022-08-27', '2022-08-27 16:02:31', '2022-08-27 09:02:31'),
+(582, 'http://localhost/compro-buana/index.php', '::1', '2022-08-27', '2022-08-27 16:04:27', '2022-08-27 09:04:27'),
+(583, 'http://localhost/compro-buana/berita/kategori/kegiatan', '::1', '2022-08-27', '2022-08-27 16:06:44', '2022-08-27 09:06:44'),
+(584, 'http://localhost/compro-buana/berita/read/pembuatan-website-profil', '::1', '2022-08-27', '2022-08-27 16:06:55', '2022-08-27 09:06:55'),
+(585, 'http://localhost/compro-buana/video', '::1', '2022-08-27', '2022-08-27 16:07:21', '2022-08-27 09:07:21'),
+(586, 'http://localhost/compro-buana/kontak', '::1', '2022-08-27', '2022-08-27 16:07:38', '2022-08-27 09:07:38'),
+(587, 'http://localhost/compro-buana/download', '::1', '2022-08-27', '2022-08-27 16:08:46', '2022-08-27 09:08:46'),
+(588, 'http://localhost/compro-buana/index.php', '::1', '2022-08-27', '2022-08-27 16:11:28', '2022-08-27 09:11:28'),
+(589, 'http://localhost/compro-buana/berita/kategori/kegiatan', '::1', '2022-08-27', '2022-08-27 16:14:19', '2022-08-27 09:14:19'),
+(590, 'http://localhost/compro-buana/download', '::1', '2022-08-27', '2022-08-27 16:14:32', '2022-08-27 09:14:32'),
+(591, 'http://localhost/compro-buana/berita/profil/profil-java-web-media', '::1', '2022-08-27', '2022-08-27 16:14:43', '2022-08-27 09:14:43'),
+(592, 'http://localhost/compro-buana/berita/profil/profil-java-web-media', '::1', '2022-08-27', '2022-08-27 16:20:24', '2022-08-27 09:20:24'),
+(593, 'http://localhost/compro-buana/kontak', '::1', '2022-08-27', '2022-08-27 16:20:45', '2022-08-27 09:20:45'),
+(594, 'http://localhost/compro-buana/index.php', '::1', '2022-08-27', '2022-08-27 16:20:58', '2022-08-27 09:20:58'),
+(595, 'http://localhost/compro-buana/berita/layanan/kursus-android-developer', '::1', '2022-08-27', '2022-08-27 16:21:17', '2022-08-27 09:21:17'),
+(596, 'http://localhost/compro-buana/berita/layanan/kursus-android-developer', '::1', '2022-08-27', '2022-08-27 16:21:48', '2022-08-27 09:21:48'),
+(597, 'http://localhost/compro-buana/berita/layanan/kursus-android-developer', '::1', '2022-08-27', '2022-08-27 16:34:31', '2022-08-27 09:34:31'),
+(598, 'http://localhost/compro-buana/berita/layanan/sksckmslkcmsa', '::1', '2022-08-27', '2022-08-27 16:34:37', '2022-08-27 09:34:37'),
+(599, 'http://localhost/comprobuana/index.php', '::1', '2022-08-31', '2022-08-31 09:22:40', '2022-08-31 02:22:40'),
+(600, 'http://localhost/comprobuana/berita/layanan/sksckmslkcmsa', '::1', '2022-08-31', '2022-08-31 09:23:03', '2022-08-31 02:23:03'),
+(601, 'http://localhost/comprobuana/berita/layanan/kursus-statistik', '::1', '2022-08-31', '2022-08-31 09:23:13', '2022-08-31 02:23:13'),
+(602, 'http://localhost/comprobuana/galeri', '::1', '2022-08-31', '2022-08-31 09:23:28', '2022-08-31 02:23:28'),
+(603, 'http://localhost/comprobuana/kontak', '::1', '2022-08-31', '2022-08-31 09:23:59', '2022-08-31 02:23:59'),
+(604, 'http://localhost/comprobuana/index.php', '::1', '2022-08-31', '2022-08-31 09:24:06', '2022-08-31 02:24:06'),
+(605, 'http://localhost/comprobuana/berita/kategori/kegiatan', '::1', '2022-08-31', '2022-08-31 09:28:29', '2022-08-31 02:28:29'),
+(606, 'http://localhost/comprobuana/berita/read/pembuatan-website-profil', '::1', '2022-08-31', '2022-08-31 09:28:38', '2022-08-31 02:28:38'),
+(607, 'http://localhost/comprobuana/download', '::1', '2022-08-31', '2022-08-31 09:31:34', '2022-08-31 02:31:34'),
+(608, 'http://localhost/comprobuana/index.php', '::1', '2022-08-31', '2022-08-31 09:32:50', '2022-08-31 02:32:50'),
+(609, 'http://localhost/comprobuana/index.php', '::1', '2022-09-05', '2022-09-05 14:04:08', '2022-09-05 07:04:08'),
+(610, 'http://localhost/comprobuana/galeri/read/4', '::1', '2022-09-05', '2022-09-05 14:05:59', '2022-09-05 07:05:59'),
+(611, 'http://localhost/comprobuana/galeri/read/5', '::1', '2022-09-05', '2022-09-05 14:07:44', '2022-09-05 07:07:44'),
+(612, 'http://localhost/comprobuana/galeri/read/10', '::1', '2022-09-05', '2022-09-05 14:08:10', '2022-09-05 07:08:10'),
+(613, 'http://localhost/comprobuana/galeri', '::1', '2022-09-05', '2022-09-05 14:08:27', '2022-09-05 07:08:27'),
+(614, 'http://localhost/comprobuana/index.php', '::1', '2022-09-05', '2022-09-05 14:10:14', '2022-09-05 07:10:14'),
+(615, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 15:08:40', '2022-09-10 08:08:40'),
+(616, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:00:53', '2022-09-10 09:00:53'),
+(617, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:01:22', '2022-09-10 09:01:22'),
+(618, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:02:03', '2022-09-10 09:02:03'),
+(619, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:02:08', '2022-09-10 09:02:08'),
+(620, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:02:49', '2022-09-10 09:02:49'),
+(621, 'http://localhost/comprobuana/index.html', '::1', '2022-09-10', '2022-09-10 16:14:50', '2022-09-10 09:14:50'),
+(622, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:14:52', '2022-09-10 09:14:52'),
+(623, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:14:54', '2022-09-10 09:14:54'),
+(624, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:14:55', '2022-09-10 09:14:55'),
+(625, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:19:23', '2022-09-10 09:19:23'),
+(626, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:20:29', '2022-09-10 09:20:29'),
+(627, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:22:09', '2022-09-10 09:22:09'),
+(628, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:23:34', '2022-09-10 09:23:34'),
+(629, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:24:24', '2022-09-10 09:24:24'),
+(630, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:24:37', '2022-09-10 09:24:37'),
+(631, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:26:37', '2022-09-10 09:26:37'),
+(632, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:28:53', '2022-09-10 09:28:53'),
+(633, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:29:00', '2022-09-10 09:29:00'),
+(634, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:33:18', '2022-09-10 09:33:18'),
+(635, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:33:37', '2022-09-10 09:33:37'),
+(636, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:33:47', '2022-09-10 09:33:47'),
+(637, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:33:53', '2022-09-10 09:33:53'),
+(638, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:35:56', '2022-09-10 09:35:56'),
+(639, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:56:05', '2022-09-10 09:56:05'),
+(640, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:58:02', '2022-09-10 09:58:02'),
+(641, 'http://localhost/comprobuana/index.php', '::1', '2022-09-10', '2022-09-10 16:58:46', '2022-09-10 09:58:46'),
+(642, 'http://localhost/comprobuana/berita/read/web-based-application', '::1', '2022-09-10', '2022-09-10 17:01:03', '2022-09-10 10:01:03'),
+(643, 'http://localhost/comprobuana/berita/read/kursus-android-developer', '::1', '2022-09-10', '2022-09-10 17:01:14', '2022-09-10 10:01:14'),
+(644, 'http://localhost/comprobuana/berita/read/buku-belajar-1', '::1', '2022-09-10', '2022-09-10 17:22:03', '2022-09-10 10:22:03'),
+(645, 'http://localhost/comprobuana/berita/read/buku-belajar-1', '::1', '2022-09-10', '2022-09-10 17:22:09', '2022-09-10 10:22:09'),
+(646, 'http://localhost/comprobuana/index.php', '::1', '2022-09-13', '2022-09-13 16:52:15', '2022-09-13 09:52:15'),
+(647, 'http://localhost/comprobuana/index.php', '::1', '2022-09-13', '2022-09-13 16:55:01', '2022-09-13 09:55:01'),
+(648, 'http://localhost/comprobuana/index.php', '::1', '2022-09-13', '2022-09-13 17:01:48', '2022-09-13 10:01:48'),
+(649, 'http://localhost/comprobuana/index.php', '::1', '2022-09-13', '2022-09-13 17:03:14', '2022-09-13 10:03:14'),
+(650, 'http://localhost/comprobuana/index.php', '::1', '2022-09-13', '2022-09-13 18:13:36', '2022-09-13 11:13:36'),
+(651, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:06:39', '2022-09-16 07:06:39'),
+(652, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:07:00', '2022-09-16 07:07:00'),
+(653, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:12:35', '2022-09-16 07:12:35'),
+(654, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:13:03', '2022-09-16 07:13:03'),
+(655, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:13:19', '2022-09-16 07:13:19'),
+(656, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:14:06', '2022-09-16 07:14:06'),
+(657, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:15:28', '2022-09-16 07:15:28'),
+(658, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:15:45', '2022-09-16 07:15:45'),
+(659, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:26:15', '2022-09-16 07:26:15'),
+(660, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:30:54', '2022-09-16 07:30:54'),
+(661, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 14:32:51', '2022-09-16 07:32:51'),
+(662, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 15:32:59', '2022-09-16 08:32:59'),
+(663, 'http://localhost/comprobuana/produk.html', '::1', '2022-09-16', '2022-09-16 15:33:17', '2022-09-16 08:33:18'),
+(664, 'http://localhost/comprobuana/tentangkami.html', '::1', '2022-09-16', '2022-09-16 15:33:21', '2022-09-16 08:33:21'),
+(665, 'http://localhost/comprobuana/produk.html', '::1', '2022-09-16', '2022-09-16 15:33:22', '2022-09-16 08:33:22'),
+(666, 'http://localhost/comprobuana/produk.html', '::1', '2022-09-16', '2022-09-16 15:33:25', '2022-09-16 08:33:25'),
+(667, 'http://localhost/comprobuana/tentangkami.html', '::1', '2022-09-16', '2022-09-16 15:33:26', '2022-09-16 08:33:26'),
+(668, 'http://localhost/comprobuana/index.php', '::1', '2022-09-16', '2022-09-16 15:33:28', '2022-09-16 08:33:28'),
+(669, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 18:22:49', '2022-09-17 11:22:49'),
+(670, 'http://localhost/comprobuana/tentangkami.html', '::1', '2022-09-17', '2022-09-17 18:23:10', '2022-09-17 11:23:10'),
+(671, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 18:23:12', '2022-09-17 11:23:12'),
+(672, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 18:26:01', '2022-09-17 11:26:01'),
+(673, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 18:27:58', '2022-09-17 11:27:58'),
+(674, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 18:28:15', '2022-09-17 11:28:15'),
+(675, 'http://localhost/comprobuana/berita/read/buku-belajar-1', '::1', '2022-09-17', '2022-09-17 18:28:46', '2022-09-17 11:28:46'),
+(676, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 18:44:40', '2022-09-17 11:44:40'),
+(677, 'http://localhost/comprobuana/produk.html', '::1', '2022-09-17', '2022-09-17 19:00:38', '2022-09-17 12:00:38'),
+(678, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:00:41', '2022-09-17 12:00:41'),
+(679, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:06:00', '2022-09-17 12:06:00'),
+(680, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:06:58', '2022-09-17 12:06:58'),
+(681, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:10:18', '2022-09-17 12:10:18'),
+(682, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:11:13', '2022-09-17 12:11:13'),
+(683, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:11:25', '2022-09-17 12:11:25'),
+(684, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:12:20', '2022-09-17 12:12:20'),
+(685, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:13:25', '2022-09-17 12:13:25'),
+(686, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:13:51', '2022-09-17 12:13:51'),
+(687, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:18:59', '2022-09-17 12:18:59'),
+(688, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:37:27', '2022-09-17 12:37:27'),
+(689, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:43:18', '2022-09-17 12:43:18'),
+(690, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:48:23', '2022-09-17 12:48:23'),
+(691, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:49:17', '2022-09-17 12:49:17'),
+(692, 'http://localhost/comprobuana/produk.html', '::1', '2022-09-17', '2022-09-17 19:49:20', '2022-09-17 12:49:20'),
+(693, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 19:49:42', '2022-09-17 12:49:42'),
+(694, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:49:46', '2022-09-17 12:49:46'),
+(695, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:58:14', '2022-09-17 12:58:14'),
+(696, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 19:58:26', '2022-09-17 12:58:26'),
+(697, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:05:47', '2022-09-17 13:05:47'),
+(698, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:07:35', '2022-09-17 13:07:35'),
+(699, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:07:37', '2022-09-17 13:07:37'),
+(700, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:09:49', '2022-09-17 13:09:49'),
+(701, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:11:37', '2022-09-17 13:11:37'),
+(702, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:11:38', '2022-09-17 13:11:38'),
+(703, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:12:29', '2022-09-17 13:12:29'),
+(704, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:12:57', '2022-09-17 13:12:57'),
+(705, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:13:07', '2022-09-17 13:13:07'),
+(706, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:13:46', '2022-09-17 13:13:46'),
+(707, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:14:05', '2022-09-17 13:14:05'),
+(708, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:14:50', '2022-09-17 13:14:50'),
+(709, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:15:40', '2022-09-17 13:15:40'),
+(710, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:16:03', '2022-09-17 13:16:03'),
+(711, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:16:37', '2022-09-17 13:16:37'),
+(712, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:16:55', '2022-09-17 13:16:55'),
+(713, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:17:03', '2022-09-17 13:17:03'),
+(714, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:17:11', '2022-09-17 13:17:11'),
+(715, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:17:21', '2022-09-17 13:17:21'),
+(716, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:17:25', '2022-09-17 13:17:25'),
+(717, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 20:18:17', '2022-09-17 13:18:17'),
+(718, 'http://localhost/comprobuana/tentangkami.html', '::1', '2022-09-17', '2022-09-17 20:18:31', '2022-09-17 13:18:31'),
+(719, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 20:58:52', '2022-09-17 13:58:52'),
+(720, 'http://localhost/comprobuana/produk.html', '::1', '2022-09-17', '2022-09-17 21:02:30', '2022-09-17 14:02:30'),
+(721, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 21:02:32', '2022-09-17 14:02:32'),
+(722, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 21:02:32', '2022-09-17 14:02:32'),
+(723, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 21:04:06', '2022-09-17 14:04:06'),
+(724, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 21:04:08', '2022-09-17 14:04:08'),
+(725, 'http://localhost/comprobuana/Produk', '::1', '2022-09-17', '2022-09-17 21:04:10', '2022-09-17 14:04:10'),
+(726, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 21:04:18', '2022-09-17 14:04:18'),
+(727, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 21:04:20', '2022-09-17 14:04:20'),
+(728, 'http://localhost/comprobuana/Produk', '::1', '2022-09-17', '2022-09-17 21:04:21', '2022-09-17 14:04:21'),
+(729, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 21:04:39', '2022-09-17 14:04:39'),
+(730, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 21:04:41', '2022-09-17 14:04:41'),
+(731, 'http://localhost/comprobuana/Produk', '::1', '2022-09-17', '2022-09-17 21:04:42', '2022-09-17 14:04:42'),
+(732, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 21:04:49', '2022-09-17 14:04:49'),
+(733, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 21:04:50', '2022-09-17 14:04:50'),
+(734, 'http://localhost/comprobuana/Produk', '::1', '2022-09-17', '2022-09-17 21:04:51', '2022-09-17 14:04:51'),
+(735, 'http://localhost/comprobuana/tentangkami.html', '::1', '2022-09-17', '2022-09-17 21:04:52', '2022-09-17 14:04:52'),
+(736, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 21:04:53', '2022-09-17 14:04:53'),
+(737, 'http://localhost/comprobuana/Produk', '::1', '2022-09-17', '2022-09-17 21:04:54', '2022-09-17 14:04:54'),
+(738, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 21:12:36', '2022-09-17 14:12:36'),
+(739, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 21:13:16', '2022-09-17 14:13:16'),
+(740, 'http://localhost/comprobuana/Produk', '::1', '2022-09-17', '2022-09-17 21:14:27', '2022-09-17 14:14:27'),
+(741, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 21:14:50', '2022-09-17 14:14:50'),
+(742, 'http://localhost/comprobuana/Produk', '::1', '2022-09-17', '2022-09-17 21:17:40', '2022-09-17 14:17:40'),
+(743, 'http://localhost/comprobuana/Produk', '::1', '2022-09-17', '2022-09-17 21:17:41', '2022-09-17 14:17:41'),
+(744, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 21:17:43', '2022-09-17 14:17:43'),
+(745, 'http://localhost/comprobuana/Produk', '::1', '2022-09-17', '2022-09-17 21:17:45', '2022-09-17 14:17:45'),
+(746, 'http://localhost/comprobuana/produk', '::1', '2022-09-17', '2022-09-17 21:18:04', '2022-09-17 14:18:04'),
+(747, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 21:18:05', '2022-09-17 14:18:05'),
+(748, 'http://localhost/comprobuana/index.php', '::1', '2022-09-17', '2022-09-17 21:18:07', '2022-09-17 14:18:07'),
+(749, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 12:22:05', '2022-09-18 05:22:05'),
+(750, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 12:22:07', '2022-09-18 05:22:07'),
+(751, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 12:22:09', '2022-09-18 05:22:09'),
+(752, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 12:22:27', '2022-09-18 05:22:27'),
+(753, 'http://localhost/comprobuana/tentangkami.html', '::1', '2022-09-18', '2022-09-18 12:24:19', '2022-09-18 05:24:19'),
+(754, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 12:24:23', '2022-09-18 05:24:23'),
+(755, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 12:27:02', '2022-09-18 05:27:02'),
+(756, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:27:05', '2022-09-18 05:27:05'),
+(757, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 12:27:23', '2022-09-18 05:27:23'),
+(758, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:27:29', '2022-09-18 05:27:29'),
+(759, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:30:16', '2022-09-18 05:30:16'),
+(760, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:33:34', '2022-09-18 05:33:34'),
+(761, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 12:34:14', '2022-09-18 05:34:14'),
+(762, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:34:17', '2022-09-18 05:34:17'),
+(763, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:36:04', '2022-09-18 05:36:04'),
+(764, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:36:12', '2022-09-18 05:36:12'),
+(765, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:36:22', '2022-09-18 05:36:22'),
+(766, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:36:38', '2022-09-18 05:36:38'),
+(767, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:36:43', '2022-09-18 05:36:43'),
+(768, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:41:00', '2022-09-18 05:41:00'),
+(769, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:41:13', '2022-09-18 05:41:13'),
+(770, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:41:15', '2022-09-18 05:41:15'),
+(771, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:41:31', '2022-09-18 05:41:31'),
+(772, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:41:37', '2022-09-18 05:41:37'),
+(773, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:41:47', '2022-09-18 05:41:47'),
+(774, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:41:54', '2022-09-18 05:41:54'),
+(775, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:41:59', '2022-09-18 05:41:59'),
+(776, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:42:11', '2022-09-18 05:42:11'),
+(777, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:42:13', '2022-09-18 05:42:13'),
+(778, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:42:38', '2022-09-18 05:42:38'),
+(779, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:42:44', '2022-09-18 05:42:44'),
+(780, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:43:02', '2022-09-18 05:43:02'),
+(781, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:43:33', '2022-09-18 05:43:33'),
+(782, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:43:44', '2022-09-18 05:43:44'),
+(783, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 12:44:19', '2022-09-18 05:44:19'),
+(784, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 12:44:20', '2022-09-18 05:44:20'),
+(785, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 12:44:25', '2022-09-18 05:44:25'),
+(786, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:48:25', '2022-09-18 05:48:25'),
+(787, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 12:48:29', '2022-09-18 05:48:29'),
+(788, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:48:29', '2022-09-18 05:48:29'),
+(789, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 12:48:30', '2022-09-18 05:48:30'),
+(790, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:48:30', '2022-09-18 05:48:30'),
+(791, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:50:21', '2022-09-18 05:50:21'),
+(792, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 12:52:28', '2022-09-18 05:52:28'),
+(793, 'http://localhost/comprobuana/produk', '::1', '2022-09-18', '2022-09-18 12:52:50', '2022-09-18 05:52:50'),
+(794, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 12:55:23', '2022-09-18 05:55:23'),
+(795, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 12:55:52', '2022-09-18 05:55:52'),
+(796, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 12:55:53', '2022-09-18 05:55:53'),
+(797, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 12:56:43', '2022-09-18 05:56:43'),
+(798, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 12:57:07', '2022-09-18 05:57:07'),
+(799, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 13:02:53', '2022-09-18 06:02:53'),
+(800, 'http://localhost/comprobuana/gallery', '::1', '2022-09-18', '2022-09-18 13:02:55', '2022-09-18 06:02:55'),
+(801, 'http://localhost/comprobuana/gallery', '::1', '2022-09-18', '2022-09-18 13:03:24', '2022-09-18 06:03:24'),
+(802, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 13:03:26', '2022-09-18 06:03:26'),
+(803, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 13:03:27', '2022-09-18 06:03:27'),
+(804, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 13:04:08', '2022-09-18 06:04:08'),
+(805, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 13:04:39', '2022-09-18 06:04:39'),
+(806, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 13:12:31', '2022-09-18 06:12:31'),
+(807, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 13:14:08', '2022-09-18 06:14:08'),
+(808, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 13:14:16', '2022-09-18 06:14:16'),
+(809, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 13:14:55', '2022-09-18 06:14:55'),
+(810, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 13:16:50', '2022-09-18 06:16:50'),
+(811, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 13:21:27', '2022-09-18 06:21:27'),
+(812, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 13:21:28', '2022-09-18 06:21:28'),
+(813, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 13:21:30', '2022-09-18 06:21:30'),
+(814, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 13:21:35', '2022-09-18 06:21:35'),
+(815, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 13:21:37', '2022-09-18 06:21:37'),
+(816, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 13:21:38', '2022-09-18 06:21:38'),
+(817, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 13:22:49', '2022-09-18 06:22:49'),
+(818, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 13:22:51', '2022-09-18 06:22:51'),
+(819, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 13:22:52', '2022-09-18 06:22:52'),
+(820, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 13:22:52', '2022-09-18 06:22:52'),
+(821, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 13:22:53', '2022-09-18 06:22:53'),
+(822, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 14:29:10', '2022-09-18 07:29:10'),
+(823, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 14:29:34', '2022-09-18 07:29:34'),
+(824, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 14:30:06', '2022-09-18 07:30:06'),
+(825, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 14:30:31', '2022-09-18 07:30:31'),
+(826, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:09:38', '2022-09-18 08:09:38'),
+(827, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:13:39', '2022-09-18 08:13:39'),
+(828, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:14:30', '2022-09-18 08:14:30'),
+(829, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:34:11', '2022-09-18 08:34:11'),
+(830, 'http://localhost/comprobuana/detail_g.html', '::1', '2022-09-18', '2022-09-18 15:34:15', '2022-09-18 08:34:15'),
+(831, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:34:17', '2022-09-18 08:34:17'),
+(832, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:50:02', '2022-09-18 08:50:02'),
+(833, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:50:37', '2022-09-18 08:50:37'),
+(834, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:56:02', '2022-09-18 08:56:02'),
+(835, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:57:41', '2022-09-18 08:57:41'),
+(836, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:58:20', '2022-09-18 08:58:20'),
+(837, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:58:22', '2022-09-18 08:58:22'),
+(838, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:58:33', '2022-09-18 08:58:33'),
+(839, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:58:52', '2022-09-18 08:58:52'),
+(840, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 15:59:16', '2022-09-18 08:59:16'),
+(841, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:00:24', '2022-09-18 09:00:24'),
+(842, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:02:37', '2022-09-18 09:02:37'),
+(843, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:02:49', '2022-09-18 09:02:49'),
+(844, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:03:05', '2022-09-18 09:03:05'),
+(845, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:03:19', '2022-09-18 09:03:19'),
+(846, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:03:28', '2022-09-18 09:03:28'),
+(847, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:03:33', '2022-09-18 09:03:33'),
+(848, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:03:39', '2022-09-18 09:03:39'),
+(849, 'http://localhost/comprobuana/detail_g.html', '::1', '2022-09-18', '2022-09-18 16:03:45', '2022-09-18 09:03:45'),
+(850, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:03:46', '2022-09-18 09:03:46'),
+(851, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:04:29', '2022-09-18 09:04:29'),
+(852, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:04:49', '2022-09-18 09:04:49'),
+(853, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:04:58', '2022-09-18 09:04:58'),
+(854, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:05:44', '2022-09-18 09:05:44'),
+(855, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:05:51', '2022-09-18 09:05:51'),
+(856, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:12:31', '2022-09-18 09:12:31'),
+(857, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:13:10', '2022-09-18 09:13:10'),
+(858, 'http://localhost/comprobuana/detail_g.html', '::1', '2022-09-18', '2022-09-18 16:13:13', '2022-09-18 09:13:13'),
+(859, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:13:15', '2022-09-18 09:13:15'),
+(860, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:21:27', '2022-09-18 09:21:27'),
+(861, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:21:46', '2022-09-18 09:21:46'),
+(862, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:21:53', '2022-09-18 09:21:53'),
+(863, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:22:11', '2022-09-18 09:22:11'),
+(864, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:22:47', '2022-09-18 09:22:47'),
+(865, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 16:26:43', '2022-09-18 09:26:43'),
+(866, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 16:26:51', '2022-09-18 09:26:51'),
+(867, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:26:53', '2022-09-18 09:26:53'),
+(868, 'http://localhost/comprobuana/detail_g.html', '::1', '2022-09-18', '2022-09-18 16:26:59', '2022-09-18 09:26:59'),
+(869, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 16:27:02', '2022-09-18 09:27:02'),
+(870, 'http://localhost/comprobuana/oops', '::1', '2022-09-18', '2022-09-18 16:27:37', '2022-09-18 09:27:37'),
+(871, 'http://localhost/comprobuana/Galeri/read/4', '::1', '2022-09-18', '2022-09-18 16:27:47', '2022-09-18 09:27:47'),
+(872, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 16:39:35', '2022-09-18 09:39:35'),
+(873, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 16:40:24', '2022-09-18 09:40:24'),
+(874, 'http://localhost/comprobuana/Galeri/detail/assets/img/artikel1.jpg', '::1', '2022-09-18', '2022-09-18 16:40:25', '2022-09-18 09:40:25'),
+(875, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 16:41:24', '2022-09-18 09:41:24'),
+(876, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 16:41:34', '2022-09-18 09:41:34'),
+(877, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 16:41:41', '2022-09-18 09:41:41'),
+(878, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 16:42:35', '2022-09-18 09:42:35'),
+(879, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:01:05', '2022-09-18 10:01:05'),
+(880, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:01:08', '2022-09-18 10:01:08'),
+(881, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:02:02', '2022-09-18 10:02:02'),
+(882, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:02:09', '2022-09-18 10:02:09'),
+(883, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:02:20', '2022-09-18 10:02:20'),
+(884, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:03:54', '2022-09-18 10:03:54'),
+(885, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:04:09', '2022-09-18 10:04:09'),
+(886, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:04:18', '2022-09-18 10:04:18'),
+(887, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:04:33', '2022-09-18 10:04:33'),
+(888, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:04:58', '2022-09-18 10:04:58'),
+(889, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:05:13', '2022-09-18 10:05:13'),
+(890, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:05:21', '2022-09-18 10:05:21'),
+(891, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:05:36', '2022-09-18 10:05:36'),
+(892, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:05:41', '2022-09-18 10:05:41'),
+(893, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 17:05:44', '2022-09-18 10:05:44');
+INSERT INTO `kunjungan` (`id_kunjungan`, `alamat`, `ip_address`, `hari`, `waktu`, `tanggal`) VALUES
+(894, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:05:48', '2022-09-18 10:05:48'),
+(895, 'http://localhost/comprobuana/detail_g.html', '::1', '2022-09-18', '2022-09-18 17:05:51', '2022-09-18 10:05:51'),
+(896, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:05:53', '2022-09-18 10:05:53'),
+(897, 'http://localhost/comprobuana/detail_g.html', '::1', '2022-09-18', '2022-09-18 17:05:56', '2022-09-18 10:05:56'),
+(898, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:05:57', '2022-09-18 10:05:57'),
+(899, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:06:37', '2022-09-18 10:06:37'),
+(900, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:06:38', '2022-09-18 10:06:38'),
+(901, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:06:42', '2022-09-18 10:06:42'),
+(902, 'http://localhost/comprobuana/Galeri/detail/6', '::1', '2022-09-18', '2022-09-18 17:06:43', '2022-09-18 10:06:43'),
+(903, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:06:46', '2022-09-18 10:06:46'),
+(904, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 17:06:48', '2022-09-18 10:06:48'),
+(905, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 17:07:00', '2022-09-18 10:07:00'),
+(906, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 17:09:32', '2022-09-18 10:09:32'),
+(907, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 17:09:48', '2022-09-18 10:09:48'),
+(908, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 17:17:31', '2022-09-18 10:17:31'),
+(909, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 17:17:45', '2022-09-18 10:17:45'),
+(910, 'http://localhost/comprobuana/Email/subscribe', '::1', '2022-09-18', '2022-09-18 17:17:55', '2022-09-18 10:17:55'),
+(911, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 17:17:57', '2022-09-18 10:17:57'),
+(912, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 17:18:12', '2022-09-18 10:18:12'),
+(913, 'http://localhost/comprobuana/Home', '::1', '2022-09-18', '2022-09-18 17:18:15', '2022-09-18 10:18:15'),
+(914, 'http://localhost/comprobuana/Home', '::1', '2022-09-18', '2022-09-18 17:18:26', '2022-09-18 10:18:26'),
+(915, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:19:06', '2022-09-18 10:19:06'),
+(916, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:19:19', '2022-09-18 10:19:19'),
+(917, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:19:27', '2022-09-18 10:19:27'),
+(918, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:21:44', '2022-09-18 10:21:44'),
+(919, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:21:46', '2022-09-18 10:21:46'),
+(920, 'http://localhost/comprobuana/berita/read/pembuatan-website-profil', '::1', '2022-09-18', '2022-09-18 17:22:03', '2022-09-18 10:22:03'),
+(921, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 17:22:54', '2022-09-18 10:22:54'),
+(922, 'http://062f-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:23:21', '2022-09-18 10:23:21'),
+(923, 'http://062f-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:23:23', '2022-09-18 10:23:23'),
+(924, 'http://062f-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:23:24', '2022-09-18 10:23:24'),
+(925, 'http://062f-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:23:24', '2022-09-18 10:23:24'),
+(926, 'http://062f-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:23:25', '2022-09-18 10:23:25'),
+(927, 'http://062f-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:23:50', '2022-09-18 10:23:50'),
+(928, 'http://062f-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:24:10', '2022-09-18 10:24:10'),
+(929, 'http://062f-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:24:16', '2022-09-18 10:24:16'),
+(930, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:24:37', '2022-09-18 10:24:37'),
+(931, 'http://062f-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:24:49', '2022-09-18 10:24:49'),
+(932, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:25:03', '2022-09-18 10:25:03'),
+(933, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 17:25:04', '2022-09-18 10:25:04'),
+(934, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 17:27:30', '2022-09-18 10:27:30'),
+(935, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 17:27:48', '2022-09-18 10:27:48'),
+(936, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:28:02', '2022-09-18 10:28:02'),
+(937, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:28:26', '2022-09-18 10:28:26'),
+(938, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 17:28:27', '2022-09-18 10:28:27'),
+(939, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 17:28:36', '2022-09-18 10:28:36'),
+(940, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 17:29:00', '2022-09-18 10:29:00'),
+(941, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:29:00', '2022-09-18 10:29:00'),
+(942, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 17:29:06', '2022-09-18 10:29:06'),
+(943, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 17:29:07', '2022-09-18 10:29:07'),
+(944, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:29:08', '2022-09-18 10:29:08'),
+(945, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 17:29:08', '2022-09-18 10:29:08'),
+(946, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 17:29:09', '2022-09-18 10:29:09'),
+(947, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 17:29:10', '2022-09-18 10:29:10'),
+(948, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:29:10', '2022-09-18 10:29:10'),
+(949, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 17:29:12', '2022-09-18 10:29:12'),
+(950, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 17:29:13', '2022-09-18 10:29:13'),
+(951, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 17:29:14', '2022-09-18 10:29:14'),
+(952, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 17:29:15', '2022-09-18 10:29:15'),
+(953, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 17:41:46', '2022-09-18 10:41:46'),
+(954, 'http://localhost/comprobuana/produk', '::1', '2022-09-18', '2022-09-18 17:47:10', '2022-09-18 10:47:10'),
+(955, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:49:12', '2022-09-18 10:49:12'),
+(956, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:49:20', '2022-09-18 10:49:20'),
+(957, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:49:45', '2022-09-18 10:49:45'),
+(958, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:50:05', '2022-09-18 10:50:05'),
+(959, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:50:42', '2022-09-18 10:50:42'),
+(960, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:50:50', '2022-09-18 10:50:50'),
+(961, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:51:17', '2022-09-18 10:51:17'),
+(962, 'http://localhost/comprobuana/Produk/detail/assets/img/sip.png', '::1', '2022-09-18', '2022-09-18 17:51:17', '2022-09-18 10:51:17'),
+(963, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:51:40', '2022-09-18 10:51:40'),
+(964, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:53:26', '2022-09-18 10:53:26'),
+(965, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:59:11', '2022-09-18 10:59:11'),
+(966, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:59:14', '2022-09-18 10:59:14'),
+(967, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 17:59:24', '2022-09-18 10:59:24'),
+(968, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:03:44', '2022-09-18 11:03:44'),
+(969, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:04:15', '2022-09-18 11:04:15'),
+(970, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:04:35', '2022-09-18 11:04:35'),
+(971, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:04:49', '2022-09-18 11:04:49'),
+(972, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:04:54', '2022-09-18 11:04:54'),
+(973, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:06:10', '2022-09-18 11:06:10'),
+(974, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:06:35', '2022-09-18 11:06:35'),
+(975, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:07:02', '2022-09-18 11:07:02'),
+(976, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:07:22', '2022-09-18 11:07:22'),
+(977, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:08:17', '2022-09-18 11:08:17'),
+(978, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:08:27', '2022-09-18 11:08:27'),
+(979, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:09:21', '2022-09-18 11:09:21'),
+(980, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:09:42', '2022-09-18 11:09:42'),
+(981, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:09:51', '2022-09-18 11:09:51'),
+(982, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 18:09:52', '2022-09-18 11:09:52'),
+(983, 'http://localhost/comprobuana/Produk/detail/buku-belajar-1', '::1', '2022-09-18', '2022-09-18 18:09:54', '2022-09-18 11:09:54'),
+(984, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 18:10:03', '2022-09-18 11:10:03'),
+(985, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:10:04', '2022-09-18 11:10:04'),
+(986, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:10:21', '2022-09-18 11:10:21'),
+(987, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:10:39', '2022-09-18 11:10:39'),
+(988, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:10:44', '2022-09-18 11:10:44'),
+(989, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:10:49', '2022-09-18 11:10:49'),
+(990, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:11:05', '2022-09-18 11:11:05'),
+(991, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:11:34', '2022-09-18 11:11:34'),
+(992, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:11:45', '2022-09-18 11:11:45'),
+(993, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:12:11', '2022-09-18 11:12:11'),
+(994, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:12:19', '2022-09-18 11:12:19'),
+(995, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:12:37', '2022-09-18 11:12:37'),
+(996, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 18:12:38', '2022-09-18 11:12:38'),
+(997, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:12:39', '2022-09-18 11:12:39'),
+(998, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:13:01', '2022-09-18 11:13:01'),
+(999, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:13:04', '2022-09-18 11:13:04'),
+(1000, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:13:16', '2022-09-18 11:13:16'),
+(1001, 'http://localhost/comprobuana/Galeri/detail/4', '::1', '2022-09-18', '2022-09-18 18:13:26', '2022-09-18 11:13:26'),
+(1002, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:13:30', '2022-09-18 11:13:30'),
+(1003, 'http://localhost/comprobuana/Galeri/detail/6', '::1', '2022-09-18', '2022-09-18 18:13:31', '2022-09-18 11:13:31'),
+(1004, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:13:34', '2022-09-18 11:13:34'),
+(1005, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:14:27', '2022-09-18 11:14:27'),
+(1006, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 18:14:31', '2022-09-18 11:14:31'),
+(1007, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:14:33', '2022-09-18 11:14:33'),
+(1008, 'http://localhost/comprobuana/Produk/detail/buku-belajar-1', '::1', '2022-09-18', '2022-09-18 18:14:35', '2022-09-18 11:14:35'),
+(1009, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:14:48', '2022-09-18 11:14:48'),
+(1010, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 18:18:23', '2022-09-18 11:18:23'),
+(1011, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 18:18:24', '2022-09-18 11:18:24'),
+(1012, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:18:24', '2022-09-18 11:18:24'),
+(1013, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 18:18:25', '2022-09-18 11:18:25'),
+(1014, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 18:18:26', '2022-09-18 11:18:26'),
+(1015, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 18:19:26', '2022-09-18 11:19:26'),
+(1016, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 18:20:38', '2022-09-18 11:20:38'),
+(1017, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 18:21:13', '2022-09-18 11:21:13'),
+(1018, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 18:21:20', '2022-09-18 11:21:20'),
+(1019, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:21:21', '2022-09-18 11:21:21'),
+(1020, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 18:21:22', '2022-09-18 11:21:22'),
+(1021, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:21:28', '2022-09-18 11:21:28'),
+(1022, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 18:21:28', '2022-09-18 11:21:28'),
+(1023, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:45:05', '2022-09-18 11:45:05'),
+(1024, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:46:11', '2022-09-18 11:46:11'),
+(1025, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:46:28', '2022-09-18 11:46:28'),
+(1026, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:46:34', '2022-09-18 11:46:34'),
+(1027, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:46:40', '2022-09-18 11:46:40'),
+(1028, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:46:44', '2022-09-18 11:46:44'),
+(1029, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:47:11', '2022-09-18 11:47:11'),
+(1030, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 18:47:13', '2022-09-18 11:47:13'),
+(1031, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:47:16', '2022-09-18 11:47:16'),
+(1032, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:51:26', '2022-09-18 11:51:26'),
+(1033, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:52:58', '2022-09-18 11:52:58'),
+(1034, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:53:07', '2022-09-18 11:53:07'),
+(1035, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:54:12', '2022-09-18 11:54:12'),
+(1036, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:55:48', '2022-09-18 11:55:48'),
+(1037, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:55:50', '2022-09-18 11:55:50'),
+(1038, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:55:55', '2022-09-18 11:55:55'),
+(1039, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 18:56:46', '2022-09-18 11:56:46'),
+(1040, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 18:56:48', '2022-09-18 11:56:48'),
+(1041, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 18:56:58', '2022-09-18 11:56:58'),
+(1042, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 18:57:01', '2022-09-18 11:57:01'),
+(1043, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:57:10', '2022-09-18 11:57:10'),
+(1044, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:57:14', '2022-09-18 11:57:14'),
+(1045, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 18:57:21', '2022-09-18 11:57:21'),
+(1046, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 18:57:39', '2022-09-18 11:57:39'),
+(1047, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 18:58:21', '2022-09-18 11:58:21'),
+(1048, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 18:58:21', '2022-09-18 11:58:21'),
+(1049, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:58:23', '2022-09-18 11:58:23'),
+(1050, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:58:24', '2022-09-18 11:58:24'),
+(1051, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 18:58:25', '2022-09-18 11:58:25'),
+(1052, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 18:58:26', '2022-09-18 11:58:26'),
+(1053, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 18:58:29', '2022-09-18 11:58:29'),
+(1054, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:00:28', '2022-09-18 12:00:28'),
+(1055, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:00:30', '2022-09-18 12:00:30'),
+(1056, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:00:30', '2022-09-18 12:00:30'),
+(1057, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:00:31', '2022-09-18 12:00:31'),
+(1058, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:00:32', '2022-09-18 12:00:32'),
+(1059, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:00:33', '2022-09-18 12:00:33'),
+(1060, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 19:01:15', '2022-09-18 12:01:15'),
+(1061, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 19:02:18', '2022-09-18 12:02:18'),
+(1062, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 19:02:38', '2022-09-18 12:02:38'),
+(1063, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 19:03:02', '2022-09-18 12:03:02'),
+(1064, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:03:05', '2022-09-18 12:03:05'),
+(1065, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:03:26', '2022-09-18 12:03:26'),
+(1066, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:04:09', '2022-09-18 12:04:09'),
+(1067, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:04:31', '2022-09-18 12:04:31'),
+(1068, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:04:47', '2022-09-18 12:04:47'),
+(1069, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:04:53', '2022-09-18 12:04:53'),
+(1070, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:04:57', '2022-09-18 12:04:57'),
+(1071, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:04:58', '2022-09-18 12:04:58'),
+(1072, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:07:05', '2022-09-18 12:07:05'),
+(1073, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:07:06', '2022-09-18 12:07:06'),
+(1074, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:07:07', '2022-09-18 12:07:07'),
+(1075, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:07:08', '2022-09-18 12:07:08'),
+(1076, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:07:09', '2022-09-18 12:07:09'),
+(1077, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:07:50', '2022-09-18 12:07:50'),
+(1078, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 19:07:54', '2022-09-18 12:07:54'),
+(1079, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 19:07:58', '2022-09-18 12:07:58'),
+(1080, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 19:08:39', '2022-09-18 12:08:39'),
+(1081, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 19:09:15', '2022-09-18 12:09:15'),
+(1082, 'http://localhost/comprobuana/kontak', '::1', '2022-09-18', '2022-09-18 19:09:23', '2022-09-18 12:09:23'),
+(1083, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:11:24', '2022-09-18 12:11:24'),
+(1084, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:11:29', '2022-09-18 12:11:29'),
+(1085, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:12:34', '2022-09-18 12:12:34'),
+(1086, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:12:34', '2022-09-18 12:12:34'),
+(1087, 'http://localhost/comprobuana/Produk/detail/buku-belajar-1', '::1', '2022-09-18', '2022-09-18 19:12:37', '2022-09-18 12:12:37'),
+(1088, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:12:39', '2022-09-18 12:12:39'),
+(1089, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:12:40', '2022-09-18 12:12:40'),
+(1090, 'http://localhost/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 19:12:42', '2022-09-18 12:12:42'),
+(1091, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:12:46', '2022-09-18 12:12:46'),
+(1092, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:12:52', '2022-09-18 12:12:52'),
+(1093, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:15:12', '2022-09-18 12:15:12'),
+(1094, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:18:11', '2022-09-18 12:18:11'),
+(1095, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:19:38', '2022-09-18 12:19:38'),
+(1096, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:19:39', '2022-09-18 12:19:39'),
+(1097, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:19:43', '2022-09-18 12:19:43'),
+(1098, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:20:22', '2022-09-18 12:20:22'),
+(1099, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:20:23', '2022-09-18 12:20:23'),
+(1100, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:20:24', '2022-09-18 12:20:24'),
+(1101, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:20:25', '2022-09-18 12:20:25'),
+(1102, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:20:25', '2022-09-18 12:20:25'),
+(1103, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:20:27', '2022-09-18 12:20:27'),
+(1104, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:22:24', '2022-09-18 12:22:24'),
+(1105, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk/detail/buku-belajar-1', '::1', '2022-09-18', '2022-09-18 19:22:31', '2022-09-18 12:22:31'),
+(1106, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:22:37', '2022-09-18 12:22:37'),
+(1107, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk/detail/buku-belajar-1', '::1', '2022-09-18', '2022-09-18 19:22:42', '2022-09-18 12:22:42'),
+(1108, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:22:51', '2022-09-18 12:22:51'),
+(1109, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:23:36', '2022-09-18 12:23:36'),
+(1110, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:25:40', '2022-09-18 12:25:40'),
+(1111, 'http://localhost/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:25:42', '2022-09-18 12:25:42'),
+(1112, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:25:44', '2022-09-18 12:25:44'),
+(1113, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:25:50', '2022-09-18 12:25:50'),
+(1114, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:25:56', '2022-09-18 12:25:56'),
+(1115, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:30:17', '2022-09-18 12:30:17'),
+(1116, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:30:31', '2022-09-18 12:30:31'),
+(1117, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-18', '2022-09-18 19:31:38', '2022-09-18 12:31:38'),
+(1118, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk/detail/buku-belajar-1', '::1', '2022-09-18', '2022-09-18 19:31:48', '2022-09-18 12:31:48'),
+(1119, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:31:56', '2022-09-18 12:31:56'),
+(1120, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:32:07', '2022-09-18 12:32:07'),
+(1121, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:32:07', '2022-09-18 12:32:07'),
+(1122, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:32:19', '2022-09-18 12:32:19'),
+(1123, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Galeri', '::1', '2022-09-18', '2022-09-18 19:32:19', '2022-09-18 12:32:19'),
+(1124, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:32:30', '2022-09-18 12:32:30'),
+(1125, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:32:40', '2022-09-18 12:32:40'),
+(1126, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:33:45', '2022-09-18 12:33:45'),
+(1127, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:33:53', '2022-09-18 12:33:53'),
+(1128, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:34:38', '2022-09-18 12:34:38'),
+(1129, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:38:25', '2022-09-18 12:38:25'),
+(1130, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:41:54', '2022-09-18 12:41:54'),
+(1131, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:42:14', '2022-09-18 12:42:14'),
+(1132, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:42:34', '2022-09-18 12:42:34'),
+(1133, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Kontak', '::1', '2022-09-18', '2022-09-18 19:42:34', '2022-09-18 12:42:34'),
+(1134, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Tentang', '::1', '2022-09-18', '2022-09-18 19:43:08', '2022-09-18 12:43:08'),
+(1135, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:43:14', '2022-09-18 12:43:14'),
+(1136, 'http://localhost/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:43:27', '2022-09-18 12:43:27'),
+(1137, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:46:49', '2022-09-18 12:46:49'),
+(1138, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/Produk', '::1', '2022-09-18', '2022-09-18 19:47:09', '2022-09-18 12:47:09'),
+(1139, 'http://bad2-2001-448a-20a2-6815-9827-7a25-df99-b602.ngrok.io/comprobuana/index.php', '::1', '2022-09-18', '2022-09-18 19:47:30', '2022-09-18 12:47:30'),
+(1140, 'http://localhost/comprobuana/index.php', '::1', '2022-09-19', '2022-09-19 11:11:04', '2022-09-19 04:11:04'),
+(1141, 'http://localhost/comprobuana/index.php', '::1', '2022-09-19', '2022-09-19 11:12:56', '2022-09-19 04:12:56'),
+(1142, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-19', '2022-09-19 11:13:19', '2022-09-19 04:13:19'),
+(1143, 'http://localhost/comprobuana/Produk', '::1', '2022-09-19', '2022-09-19 11:13:22', '2022-09-19 04:13:22'),
+(1144, 'http://localhost/comprobuana/produk', '::1', '2022-09-19', '2022-09-19 11:13:49', '2022-09-19 04:13:49'),
+(1145, 'http://localhost/comprobuana/index.php', '::1', '2022-09-19', '2022-09-19 11:13:51', '2022-09-19 04:13:51'),
+(1146, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-19', '2022-09-19 11:14:02', '2022-09-19 04:14:02'),
+(1147, 'http://localhost/comprobuana/index.php', '::1', '2022-09-19', '2022-09-19 11:14:06', '2022-09-19 04:14:06'),
+(1148, 'http://localhost/comprobuana/Produk', '::1', '2022-09-19', '2022-09-19 11:14:09', '2022-09-19 04:14:09'),
+(1149, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-19', '2022-09-19 11:14:10', '2022-09-19 04:14:10'),
+(1150, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-19', '2022-09-19 11:14:12', '2022-09-19 04:14:12'),
+(1151, 'http://localhost/comprobuana/index.php', '::1', '2022-09-19', '2022-09-19 11:14:16', '2022-09-19 04:14:16'),
+(1152, 'http://localhost/comprobuana/index.php', '::1', '2022-09-19', '2022-09-19 11:34:27', '2022-09-19 04:34:27'),
+(1153, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-19', '2022-09-19 11:34:35', '2022-09-19 04:34:35'),
+(1154, 'http://localhost/comprobuana/Produk', '::1', '2022-09-19', '2022-09-19 11:34:36', '2022-09-19 04:34:36'),
+(1155, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-19', '2022-09-19 11:34:37', '2022-09-19 04:34:37'),
+(1156, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-19', '2022-09-19 11:34:38', '2022-09-19 04:34:38'),
+(1157, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-19', '2022-09-19 11:34:39', '2022-09-19 04:34:39'),
+(1158, 'http://localhost/comprobuana/index.php', '::1', '2022-09-19', '2022-09-19 11:36:20', '2022-09-19 04:36:20'),
+(1159, 'http://localhost/comprobuana/index.php', '::1', '2022-09-19', '2022-09-19 11:37:24', '2022-09-19 04:37:24'),
+(1160, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-19', '2022-09-19 11:37:43', '2022-09-19 04:37:43'),
+(1161, 'http://localhost/comprobuana/Produk', '::1', '2022-09-19', '2022-09-19 11:37:47', '2022-09-19 04:37:47'),
+(1162, 'http://localhost/comprobuana/index.php', '::1', '2022-09-19', '2022-09-19 11:39:50', '2022-09-19 04:39:50'),
+(1163, 'http://localhost/comprobuana/Produk', '::1', '2022-09-19', '2022-09-19 11:39:55', '2022-09-19 04:39:55'),
+(1164, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-19', '2022-09-19 11:39:58', '2022-09-19 04:39:58'),
+(1165, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-19', '2022-09-19 11:39:59', '2022-09-19 04:39:59'),
+(1166, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:21:01', '2022-09-20 02:21:01'),
+(1167, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:21:47', '2022-09-20 02:21:47'),
+(1168, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:21:58', '2022-09-20 02:21:58'),
+(1169, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:22:44', '2022-09-20 02:22:44'),
+(1170, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:24:45', '2022-09-20 02:24:45'),
+(1171, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:25:08', '2022-09-20 02:25:08'),
+(1172, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:25:54', '2022-09-20 02:25:54'),
+(1173, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:26:20', '2022-09-20 02:26:20'),
+(1174, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:26:56', '2022-09-20 02:26:56'),
+(1175, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:27:31', '2022-09-20 02:27:31'),
+(1176, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:27:38', '2022-09-20 02:27:38'),
+(1177, 'http://localhost/comprobuana/berita', '::1', '2022-09-20', '2022-09-20 09:28:41', '2022-09-20 02:28:41'),
+(1178, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:28:43', '2022-09-20 02:28:43'),
+(1179, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:30:21', '2022-09-20 02:30:21'),
+(1180, 'http://localhost/comprobuana/Berita/read/assets/img/artikel1.jpg', '::1', '2022-09-20', '2022-09-20 09:30:21', '2022-09-20 02:30:21'),
+(1181, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:30:33', '2022-09-20 02:30:33'),
+(1182, 'http://localhost/comprobuana/Berita/read/assets/img/artikel1.jpg', '::1', '2022-09-20', '2022-09-20 09:30:33', '2022-09-20 02:30:33'),
+(1183, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:31:43', '2022-09-20 02:31:43'),
+(1184, 'http://localhost/comprobuana/Berita/read/assets/img/artikel1.jpg', '::1', '2022-09-20', '2022-09-20 09:31:43', '2022-09-20 02:31:43'),
+(1185, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:32:03', '2022-09-20 02:32:03'),
+(1186, 'http://localhost/comprobuana/Berita/read/assets/img/artikel1.jpg', '::1', '2022-09-20', '2022-09-20 09:32:04', '2022-09-20 02:32:04'),
+(1187, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:32:49', '2022-09-20 02:32:49'),
+(1188, 'http://localhost/comprobuana/Berita/read/assets/img/artikel1.jpg', '::1', '2022-09-20', '2022-09-20 09:32:49', '2022-09-20 02:32:49'),
+(1189, 'http://localhost/comprobuana/Berita', '::1', '2022-09-20', '2022-09-20 09:34:07', '2022-09-20 02:34:07'),
+(1190, 'http://localhost/comprobuana/index.html', '::1', '2022-09-20', '2022-09-20 09:34:10', '2022-09-20 02:34:10'),
+(1191, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-20', '2022-09-20 09:34:34', '2022-09-20 02:34:34'),
+(1192, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-20', '2022-09-20 09:34:40', '2022-09-20 02:34:40'),
+(1193, 'http://localhost/comprobuana/Produk', '::1', '2022-09-20', '2022-09-20 09:34:41', '2022-09-20 02:34:41'),
+(1194, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 09:34:42', '2022-09-20 02:34:42'),
+(1195, 'http://localhost/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:34:42', '2022-09-20 02:34:42'),
+(1196, 'http://localhost/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:37:58', '2022-09-20 02:37:58'),
+(1197, 'http://localhost/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:38:00', '2022-09-20 02:38:00'),
+(1198, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:38:03', '2022-09-20 02:38:03'),
+(1199, 'http://localhost/comprobuana/Berita/read/assets/img/artikel1.jpg', '::1', '2022-09-20', '2022-09-20 09:38:03', '2022-09-20 02:38:03'),
+(1200, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:38:56', '2022-09-20 02:38:56'),
+(1201, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:40:16', '2022-09-20 02:40:16'),
+(1202, 'http://localhost/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:40:27', '2022-09-20 02:40:27'),
+(1203, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:41:01', '2022-09-20 02:41:01'),
+(1204, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:41:49', '2022-09-20 02:41:49'),
+(1205, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:41:51', '2022-09-20 02:41:51'),
+(1206, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:41:52', '2022-09-20 02:41:52'),
+(1207, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:41:54', '2022-09-20 02:41:54'),
+(1208, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:41:57', '2022-09-20 02:41:57'),
+(1209, 'http://localhost/comprobuana/Produk', '::1', '2022-09-20', '2022-09-20 09:42:40', '2022-09-20 02:42:40'),
+(1210, 'http://localhost/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:43:35', '2022-09-20 02:43:35'),
+(1211, 'http://localhost/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:45:59', '2022-09-20 02:45:59'),
+(1212, 'http://localhost/comprobuana/Berita', '::1', '2022-09-20', '2022-09-20 09:46:05', '2022-09-20 02:46:05'),
+(1213, 'http://localhost/comprobuana/Berita/read/web-based-application', '::1', '2022-09-20', '2022-09-20 09:46:10', '2022-09-20 02:46:10'),
+(1214, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 09:48:57', '2022-09-20 02:48:57'),
+(1215, 'http://localhost/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:49:00', '2022-09-20 02:49:00'),
+(1216, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-20', '2022-09-20 09:49:09', '2022-09-20 02:49:09'),
+(1217, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 09:49:19', '2022-09-20 02:49:19'),
+(1218, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 09:49:57', '2022-09-20 02:49:57'),
+(1219, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 09:50:05', '2022-09-20 02:50:05'),
+(1220, 'http://localhost/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:50:22', '2022-09-20 02:50:22'),
+(1221, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 09:51:34', '2022-09-20 02:51:34'),
+(1222, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 09:52:09', '2022-09-20 02:52:09'),
+(1223, 'http://localhost/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 09:52:11', '2022-09-20 02:52:11'),
+(1224, 'http://localhost/comprobuana/Produk', '::1', '2022-09-20', '2022-09-20 09:52:14', '2022-09-20 02:52:14'),
+(1225, 'http://localhost/comprobuana/Galeri', '::1', '2022-09-20', '2022-09-20 09:52:16', '2022-09-20 02:52:16'),
+(1226, 'http://localhost/comprobuana/Kontak', '::1', '2022-09-20', '2022-09-20 09:52:18', '2022-09-20 02:52:18'),
+(1227, 'http://localhost/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 09:52:24', '2022-09-20 02:52:24'),
+(1228, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 10:01:24', '2022-09-20 03:01:24'),
+(1229, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 10:01:49', '2022-09-20 03:01:49'),
+(1230, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 10:07:02', '2022-09-20 03:07:02'),
+(1231, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 10:07:58', '2022-09-20 03:07:58'),
+(1232, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Produk', '::1', '2022-09-20', '2022-09-20 10:08:04', '2022-09-20 03:08:04'),
+(1233, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Produk', '::1', '2022-09-20', '2022-09-20 10:08:06', '2022-09-20 03:08:06'),
+(1234, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Galeri', '::1', '2022-09-20', '2022-09-20 10:08:40', '2022-09-20 03:08:40'),
+(1235, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Galeri', '::1', '2022-09-20', '2022-09-20 10:08:42', '2022-09-20 03:08:42'),
+(1236, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Galeri/detail/4', '::1', '2022-09-20', '2022-09-20 10:09:38', '2022-09-20 03:09:38'),
+(1237, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Kontak', '::1', '2022-09-20', '2022-09-20 10:09:51', '2022-09-20 03:09:51'),
+(1238, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Kontak', '::1', '2022-09-20', '2022-09-20 10:09:53', '2022-09-20 03:09:53'),
+(1239, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Kontak', '::1', '2022-09-20', '2022-09-20 10:10:31', '2022-09-20 03:10:31'),
+(1240, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Kontak', '::1', '2022-09-20', '2022-09-20 10:10:41', '2022-09-20 03:10:41'),
+(1241, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 10:10:45', '2022-09-20 03:10:45'),
+(1242, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 10:21:46', '2022-09-20 03:21:46'),
+(1243, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Produk', '::1', '2022-09-20', '2022-09-20 10:21:56', '2022-09-20 03:21:56'),
+(1244, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Produk/detail/buku-belajar-2', '::1', '2022-09-20', '2022-09-20 10:21:59', '2022-09-20 03:21:59'),
+(1245, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Produk', '::1', '2022-09-20', '2022-09-20 10:22:23', '2022-09-20 03:22:23'),
+(1246, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Produk/detail/buku-belajar-1', '::1', '2022-09-20', '2022-09-20 10:22:25', '2022-09-20 03:22:25'),
+(1247, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Produk/detail/buku-belajar-1', '::1', '2022-09-20', '2022-09-20 10:22:28', '2022-09-20 03:22:28'),
+(1248, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Produk/detail/buku-belajar-1', '::1', '2022-09-20', '2022-09-20 10:22:53', '2022-09-20 03:22:53'),
+(1249, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Galeri', '::1', '2022-09-20', '2022-09-20 10:23:36', '2022-09-20 03:23:36'),
+(1250, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Galeri/detail/6', '::1', '2022-09-20', '2022-09-20 10:23:43', '2022-09-20 03:23:43'),
+(1251, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Kontak', '::1', '2022-09-20', '2022-09-20 10:23:56', '2022-09-20 03:23:56'),
+(1252, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 10:24:01', '2022-09-20 03:24:01'),
+(1253, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 10:41:14', '2022-09-20 03:41:14'),
+(1254, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 10:41:25', '2022-09-20 03:41:25'),
+(1255, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Kontak', '::1', '2022-09-20', '2022-09-20 10:42:44', '2022-09-20 03:42:44'),
+(1256, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Kontak', '::1', '2022-09-20', '2022-09-20 10:43:08', '2022-09-20 03:43:08'),
+(1257, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 10:43:30', '2022-09-20 03:43:30'),
+(1258, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 10:43:39', '2022-09-20 03:43:39'),
+(1259, 'http://a696-43-247-38-25.ngrok.io/comprobuana/index.php', '::1', '2022-09-20', '2022-09-20 10:43:49', '2022-09-20 03:43:49'),
+(1260, 'http://a696-43-247-38-25.ngrok.io/comprobuana/Tentang', '::1', '2022-09-20', '2022-09-20 10:43:59', '2022-09-20 03:43:59');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pekerjaan`
+-- Struktur dari tabel `pekerjaan`
 --
 
 CREATE TABLE `pekerjaan` (
@@ -1003,7 +1718,7 @@ CREATE TABLE `pekerjaan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pekerjaan`
+-- Dumping data untuk tabel `pekerjaan`
 --
 
 INSERT INTO `pekerjaan` (`id_pekerjaan`, `slug_pekerjaan`, `urutan`, `nama_pekerjaan`, `keterangan`) VALUES
@@ -1020,7 +1735,7 @@ INSERT INTO `pekerjaan` (`id_pekerjaan`, `slug_pekerjaan`, `urutan`, `nama_peker
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staff`
+-- Struktur dari tabel `staff`
 --
 
 CREATE TABLE `staff` (
@@ -1049,18 +1764,10 @@ CREATE TABLE `staff` (
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`id_staff`, `id_user`, `id_kategori_staff`, `urutan`, `nama`, `alamat`, `telepon`, `website`, `email`, `password`, `password_hint`, `isi`, `jabatan`, `keahlian`, `gambar`, `status_staff`, `keywords`, `status_baca`, `status_tutor`, `ip_address`, `tempat_lahir`, `tanggal_lahir`, `tanggal`) VALUES
-(9, 1, NULL, 0, 'Fitra Raudha', '', '0813 8841 0829', '', '', NULL, NULL, NULL, 'Direktur', '', NULL, 'Yes', '', 'Sudah', 'Ya', '', '', '1970-01-01', '2019-07-15 06:31:43'),
-(10, 1, NULL, 0, 'Sigit Yuwono Wachid', '', '085715100485', '', '', NULL, NULL, NULL, '', '', NULL, 'No', '', 'Sudah', 'Ya', '', '', '1970-01-01', '2019-04-14 04:58:29');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sub_menu`
+-- Struktur dari tabel `sub_menu`
 --
 
 CREATE TABLE `sub_menu` (
@@ -1073,7 +1780,7 @@ CREATE TABLE `sub_menu` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `sub_menu`
+-- Dumping data untuk tabel `sub_menu`
 --
 
 INSERT INTO `sub_menu` (`id_sub_menu`, `id_menu`, `nama_sub_menu`, `link`, `target`, `urutan`) VALUES
@@ -1083,7 +1790,7 @@ INSERT INTO `sub_menu` (`id_sub_menu`, `id_menu`, `nama_sub_menu`, `link`, `targ
 -- --------------------------------------------------------
 
 --
--- Table structure for table `up`
+-- Struktur dari tabel `up`
 --
 
 CREATE TABLE `up` (
@@ -1099,7 +1806,7 @@ CREATE TABLE `up` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `up`
+-- Dumping data untuk tabel `up`
 --
 
 INSERT INTO `up` (`id_up`, `id_client`, `id_user`, `nama_up`, `bagian`, `email`, `telepon`, `keterangan`, `tanggal`) VALUES
@@ -1110,7 +1817,7 @@ INSERT INTO `up` (`id_up`, `id_client`, `id_user`, `nama_up`, `bagian`, `email`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -1130,18 +1837,16 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id_user`, `id_bagian`, `nama`, `email`, `username`, `password`, `password_hint`, `akses_level`, `kode_rahasia`, `gambar`, `keterangan`, `tanggal_post`, `tanggal`) VALUES
-(1, 0, 'Andoyo Cakep', 'andoyoandoyo@gmail.com', 'javawebmedia', 'dc28d4424ece38803650f440d7eb1cb2b3fb6651', 'javawebmedia', 'Admin', NULL, 'team-3.jpg', '', '2019-10-12 15:50:21', '2020-02-13 00:58:36'),
-(2, 0, 'Rayyan', 'andoyoandoyo@gmail.com', 'rayyan', 'acc5d43e0936dbf3f27b906891aaafdf9ede4508', '', 'User', NULL, NULL, '', '2019-04-24 17:21:18', '2019-04-24 10:21:18'),
-(3, 0, 'DITJEN PENYELENGGARAAN HAJI DAN UMRAH KEMENTERIAN ', 'andoyoandoyo@gmail.com', 'diana', '6a90af129eeefc2f6e6a38746a2b33cb04c2c632', '', 'User', NULL, NULL, '<p>adada</p>', '2019-10-12 14:10:05', '2019-10-12 07:10:05');
+(4, 0, 'Norman Ardian', 'normanardian24@gmail.com', 'Norman', 'd9de256ff03a0f3e71bbb15f7952a1a625a9440c', '', 'Admin', NULL, 'foto_ijazah_fix.jpeg', '<p>Inculture - Studio</p>', '2022-08-27 16:11:09', '2022-08-27 09:12:44');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_log`
+-- Struktur dari tabel `user_log`
 --
 
 CREATE TABLE `user_log` (
@@ -1156,7 +1861,7 @@ CREATE TABLE `user_log` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_log`
+-- Dumping data untuk tabel `user_log`
 --
 
 INSERT INTO `user_log` (`id_user_log`, `ip_address`, `id_user`, `username`, `akses_level`, `url`, `jenis`, `tanggal`) VALUES
@@ -3049,12 +3754,322 @@ INSERT INTO `user_log` (`id_user_log`, `ip_address`, `id_user`, `username`, `aks
 (0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro/admin/galeri', '', '2020-02-13 00:54:28'),
 (0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro/admin/akun', '', '2020-02-13 00:58:21'),
 (0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro/admin/akun/password', '', '2020-02-13 00:58:36'),
-(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro/admin/akun', '', '2020-02-13 00:58:37');
+(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro/admin/akun', '', '2020-02-13 00:58:37'),
+(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro-buana/admin/berita', '', '2022-08-27 09:03:38'),
+(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro-buana/admin/kategori', '', '2022-08-27 09:03:51'),
+(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro-buana/admin/berita', '', '2022-08-27 09:04:08'),
+(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro-buana/admin/berita/proses', '', '2022-08-27 09:04:13'),
+(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro-buana/admin/berita', '', '2022-08-27 09:04:13'),
+(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro-buana/admin/video', '', '2022-08-27 09:07:13'),
+(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro-buana/admin/video', '', '2022-08-27 09:09:19'),
+(0, '::1', 1, 'javawebmedia', '', 'http://localhost/compro-buana/admin/akun', '', '2022-08-27 09:10:12'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/akun', '', '2022-08-27 09:11:58'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/akun', '', '2022-08-27 09:12:43'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/akun', '', '2022-08-27 09:12:44'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/kategori', '', '2022-08-27 09:13:22'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita', '', '2022-08-27 09:13:26'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/proses', '', '2022-08-27 09:13:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita', '', '2022-08-27 09:13:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/proses', '', '2022-08-27 09:14:04'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita', '', '2022-08-27 09:14:04'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/agenda', '', '2022-08-27 09:14:11'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/tambah', '', '2022-08-27 09:14:47'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/tambah', '', '2022-08-27 09:16:02'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/download', '', '2022-08-27 09:17:46'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/download/tambah', '', '2022-08-27 09:17:53'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita', '', '2022-08-27 09:21:28'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/edit/6', '', '2022-08-27 09:21:32'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/edit/6', '', '2022-08-27 09:21:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/jenis_berita/Layanan', '', '2022-08-27 09:21:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/tambah', '', '2022-08-27 09:31:58'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/tambah', '', '2022-08-27 09:34:24'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/jenis_berita/Layanan', '', '2022-08-27 09:34:25'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/compro-buana/admin/berita/edit/8', '', '2022-08-27 09:34:53'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-05 07:05:22'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-05 07:05:30'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-05 07:05:40'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-05 07:09:37'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-05 07:09:50'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video/tambah', '', '2022-09-05 07:10:54'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 08:59:36'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 08:59:41'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 09:00:06'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-10 09:00:16'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-10 09:00:28'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-10 09:00:30'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-10 09:00:31'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-10 09:15:21'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-10 09:15:35'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-10 09:15:36'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 09:15:52'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 09:15:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 09:17:01'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-10 09:17:59'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori/edit/6', '', '2022-09-10 09:18:03'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 09:18:08'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 09:59:07'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 09:59:15'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 09:59:46'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:00:16'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 10:00:23'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-10 10:00:33'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 10:00:48'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/7', '', '2022-09-10 10:00:50'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 10:00:52'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/kategori/5', '', '2022-09-10 10:00:54'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 10:00:57'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:01:48'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:02:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:03:05'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:03:21'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:05:02'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:06:14'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:08:13'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:08:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:12:08'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-10 10:21:30'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-10 10:21:31'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 10:21:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/kategori/6', '', '2022-09-10 10:21:47'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 10:21:51'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-10 10:21:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 10:48:11'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-10 10:48:18'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-10 10:48:52'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Profil', '', '2022-09-10 10:48:52'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-10 10:51:25'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-13 09:54:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:25:01'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/delete/8', '', '2022-09-17 11:25:07'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:25:08'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-17 11:25:25'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-17 11:25:41'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-17 11:25:41'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:25:46'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/9', '', '2022-09-17 11:25:49'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/9', '', '2022-09-17 11:25:57'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Profil', '', '2022-09-17 11:25:58'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/9', '', '2022-09-17 11:26:20'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/9', '', '2022-09-17 11:27:21'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/9', '', '2022-09-17 11:27:30'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/9', '', '2022-09-17 11:27:39'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-17 11:27:46'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori/delete/6', '', '2022-09-17 11:27:49'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-17 11:27:49'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:28:02'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/9', '', '2022-09-17 11:28:05'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/9', '', '2022-09-17 11:28:11'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-17 11:28:11'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:45:04'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-17 11:46:33'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:46:44'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Berita', '', '2022-09-17 11:46:47'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:46:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:47:05'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:49:30'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 11:51:37'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 12:45:51'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-17 12:45:52'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-17 12:46:30'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-17 12:46:30'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-17 12:46:51'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-17 12:46:59'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-17 12:46:59'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-17 12:47:04'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-17 12:47:07'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-17 12:47:11'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-17 12:47:11'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-17 13:14:23'),
+(0, '::1', 0, '-', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 05:23:14'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 05:23:23'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 05:23:39'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 06:05:46'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 06:11:30'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 06:17:37'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-18 06:17:40'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 07:44:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 07:44:56'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 07:46:33'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 07:46:36'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 07:46:46'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 07:47:11'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 07:47:11'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 07:47:14'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 07:47:18'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 07:47:18'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/10', '', '2022-09-18 07:47:29'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/10', '', '2022-09-18 07:47:34'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 07:47:35'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 08:20:02'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 08:20:13'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-18 08:20:15'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 08:20:56'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 08:21:05'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:25:50'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:25:52'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:26:10'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:26:18'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:26:41'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:27:54'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:28:00'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:28:00'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:28:06'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:28:50'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:29:35'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:29:39'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:29:39'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:30:43'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 08:30:47'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 08:30:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 08:32:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:32:53'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:32:55'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:32:59'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:32:59'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:33:04'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:33:28'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:33:28'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:33:43'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:33:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/11', '', '2022-09-18 08:33:48'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:33:49'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 08:34:35'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 08:34:37'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/kategori/8', '', '2022-09-18 08:34:46'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:38:03'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/delete/7', '', '2022-09-18 08:49:04'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:49:04'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/delete/9', '', '2022-09-18 08:49:10'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:49:10'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/delete/8', '', '2022-09-18 08:49:15'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 08:49:15'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 09:12:04'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori_galeri', '', '2022-09-18 09:20:33'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori_galeri', '', '2022-09-18 09:20:46'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori_galeri', '', '2022-09-18 09:20:46'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-18 09:20:52'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 09:20:56'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/tambah', '', '2022-09-18 09:21:17'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 09:21:18'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/12', '', '2022-09-18 09:22:04'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/12', '', '2022-09-18 09:22:09'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 09:22:10'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 09:43:24'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 10:53:13'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 10:53:18'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 10:53:23'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 10:53:23'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-18 10:55:08'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-18 10:55:17'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 10:58:14'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 10:58:16'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 10:58:20'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 10:58:21'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:03:25'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:03:42'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 11:03:43'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:03:52'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:04:33'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 11:04:33'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:05:18'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:05:51'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:05:56'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 11:05:57'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:05:59'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:06:07'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 11:06:08'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:06:20'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:06:34'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 11:06:34'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:06:54'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:07:00'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 11:07:00'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:07:13'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/10', '', '2022-09-18 11:07:20'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 11:07:20'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 11:19:13'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:19:18'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:19:24'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Berita', '', '2022-09-18 11:19:24'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:19:34'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Berita', '', '2022-09-18 11:19:41'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Berita', '', '2022-09-18 11:26:02'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 11:26:06'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 11:26:08'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 11:26:16'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 11:26:18'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/tambah', '', '2022-09-18 11:26:29'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-18 11:26:31'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-18 11:26:41'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori', '', '2022-09-18 11:26:41'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 11:26:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 11:28:19'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:28:23'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:28:54'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:29:03'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita', '', '2022-09-18 11:29:03'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:29:12'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:29:44'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:30:50'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:31:00'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/edit/4', '', '2022-09-18 11:31:05'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Profil', '', '2022-09-18 11:31:05'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 11:32:47'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita', '', '2022-09-18 11:32:51'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 11:35:17'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/Produk', '', '2022-09-18 11:36:14'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/berita', '', '2022-09-18 11:36:16'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/berita', '', '2022-09-18 11:36:51'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/profil', '', '2022-09-18 11:36:54'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/produk', '', '2022-09-18 11:36:57'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/berita', '', '2022-09-18 11:37:02'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 11:37:09'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/banner', '', '2022-09-18 11:42:13'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/banner', '', '2022-09-18 11:42:32'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/banner', '', '2022-09-18 11:42:38'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/berita/jenis_berita/berita', '', '2022-09-18 11:42:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 11:42:49'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/banner', '', '2022-09-18 11:42:56'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/banner', '', '2022-09-18 11:43:15'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-18 11:43:17'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/homepage', '', '2022-09-18 11:43:42'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/galeri', '', '2022-09-18 11:43:49'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/galeri', '', '2022-09-18 11:44:40'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/homepage', '', '2022-09-18 11:44:44'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/galeri', '', '2022-09-18 11:44:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/homepage', '', '2022-09-18 11:44:49'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-18 11:47:22'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video/delete/5', '', '2022-09-18 11:47:29'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-18 11:47:29'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-18 11:48:14'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-18 11:48:34'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-18 11:48:45'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video/edit/4', '', '2022-09-18 11:50:17'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video/edit/4', '', '2022-09-18 11:51:19'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-18 11:51:19'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-18 11:54:10'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-19 04:23:38'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-19 04:23:57'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/video', '', '2022-09-19 04:24:21'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/galeri', '', '2022-09-19 04:32:11'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/homepage', '', '2022-09-19 04:32:14'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/delete/5', '', '2022-09-19 04:32:19'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-19 04:32:20'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/delete/6', '', '2022-09-19 04:32:37'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-19 04:32:38'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/delete/10', '', '2022-09-19 04:32:42'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-19 04:32:42'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/4', '', '2022-09-19 04:32:48'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/edit/4', '', '2022-09-19 04:33:05'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri', '', '2022-09-19 04:33:05'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/galeri', '', '2022-09-19 04:33:09'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/galeri/jenis_galeri/homepage', '', '2022-09-19 04:33:12'),
+(0, '::1', 4, 'Norman', '', 'http://localhost/comprobuana/admin/kategori_galeri', '', '2022-09-19 04:33:15');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `video`
+-- Struktur dari tabel `video`
 --
 
 CREATE TABLE `video` (
@@ -3070,25 +4085,24 @@ CREATE TABLE `video` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `video`
+-- Dumping data untuk tabel `video`
 --
 
 INSERT INTO `video` (`id_video`, `judul`, `posisi`, `keterangan`, `video`, `urutan`, `bahasa`, `id_user`, `tanggal`) VALUES
-(4, 'INSTALASI XAMPP DAN SUBLIME TEXT', 'Homepage', 'INSTALASI XAMPP DAN SUBLIME TEXT', 'A66PiaPuTZs', 1, 'Indonesia', 1, '2020-02-13 00:48:03'),
-(5, 'Sesi 2 Konfigurasi, Halaman Login, Belajar Controller dan View', 'Homepage', 'Sesi 2 Konfigurasi, Halaman Login, Belajar Controller dan View', 'kFfAir_JgIU', 2, 'Indonesia', 1, '2020-02-13 00:48:31');
+(4, 'Membaca Buku', 'Homepage', 'Budaya membaca Buku', 'IT2b4TJNH6c', 1, 'Indonesia', 4, '2022-09-18 11:51:19');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `agenda`
+-- Indeks untuk tabel `agenda`
 --
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`id_agenda`);
 
 --
--- Indexes for table `bagian`
+-- Indeks untuk tabel `bagian`
 --
 ALTER TABLE `bagian`
   ADD PRIMARY KEY (`id_bagian`),
@@ -3096,189 +4110,213 @@ ALTER TABLE `bagian`
   ADD UNIQUE KEY `nama_bagian` (`nama_bagian`);
 
 --
--- Indexes for table `berita`
+-- Indeks untuk tabel `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`id_berita`);
 
 --
--- Indexes for table `client`
+-- Indeks untuk tabel `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id_client`);
 
 --
--- Indexes for table `download`
+-- Indeks untuk tabel `download`
 --
 ALTER TABLE `download`
   ADD PRIMARY KEY (`id_download`);
 
 --
--- Indexes for table `galeri`
+-- Indeks untuk tabel `email_pesan`
+--
+ALTER TABLE `email_pesan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `email_subscribe`
+--
+ALTER TABLE `email_subscribe`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `galeri`
 --
 ALTER TABLE `galeri`
   ADD PRIMARY KEY (`id_galeri`);
 
 --
--- Indexes for table `kategori`
+-- Indeks untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indexes for table `kategori_download`
+-- Indeks untuk tabel `kategori_download`
 --
 ALTER TABLE `kategori_download`
   ADD PRIMARY KEY (`id_kategori_download`);
 
 --
--- Indexes for table `kategori_galeri`
+-- Indeks untuk tabel `kategori_galeri`
 --
 ALTER TABLE `kategori_galeri`
   ADD PRIMARY KEY (`id_kategori_galeri`);
 
 --
--- Indexes for table `kategori_staff`
+-- Indeks untuk tabel `kategori_staff`
 --
 ALTER TABLE `kategori_staff`
   ADD PRIMARY KEY (`id_kategori_staff`);
 
 --
--- Indexes for table `konfigurasi`
+-- Indeks untuk tabel `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
   ADD PRIMARY KEY (`id_konfigurasi`);
 
 --
--- Indexes for table `kunjungan`
+-- Indeks untuk tabel `kunjungan`
 --
 ALTER TABLE `kunjungan`
   ADD PRIMARY KEY (`id_kunjungan`);
 
 --
--- Indexes for table `staff`
+-- Indeks untuk tabel `staff`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`id_staff`);
 
 --
--- Indexes for table `sub_menu`
+-- Indeks untuk tabel `sub_menu`
 --
 ALTER TABLE `sub_menu`
   ADD PRIMARY KEY (`id_sub_menu`),
   ADD UNIQUE KEY `link` (`link`);
 
 --
--- Indexes for table `up`
+-- Indeks untuk tabel `up`
 --
 ALTER TABLE `up`
   ADD PRIMARY KEY (`id_up`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `agenda`
+-- AUTO_INCREMENT untuk tabel `agenda`
 --
 ALTER TABLE `agenda`
   MODIFY `id_agenda` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `bagian`
+-- AUTO_INCREMENT untuk tabel `bagian`
 --
 ALTER TABLE `bagian`
   MODIFY `id_bagian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `berita`
+-- AUTO_INCREMENT untuk tabel `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `client`
+-- AUTO_INCREMENT untuk tabel `client`
 --
 ALTER TABLE `client`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `download`
+-- AUTO_INCREMENT untuk tabel `download`
 --
 ALTER TABLE `download`
   MODIFY `id_download` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `galeri`
+-- AUTO_INCREMENT untuk tabel `email_pesan`
+--
+ALTER TABLE `email_pesan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `email_subscribe`
+--
+ALTER TABLE `email_subscribe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `kategori`
+-- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `kategori_download`
+-- AUTO_INCREMENT untuk tabel `kategori_download`
 --
 ALTER TABLE `kategori_download`
   MODIFY `id_kategori_download` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `kategori_galeri`
+-- AUTO_INCREMENT untuk tabel `kategori_galeri`
 --
 ALTER TABLE `kategori_galeri`
-  MODIFY `id_kategori_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_kategori_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `kategori_staff`
+-- AUTO_INCREMENT untuk tabel `kategori_staff`
 --
 ALTER TABLE `kategori_staff`
   MODIFY `id_kategori_staff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `konfigurasi`
+-- AUTO_INCREMENT untuk tabel `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
   MODIFY `id_konfigurasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `kunjungan`
+-- AUTO_INCREMENT untuk tabel `kunjungan`
 --
 ALTER TABLE `kunjungan`
-  MODIFY `id_kunjungan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=581;
+  MODIFY `id_kunjungan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1261;
 
 --
--- AUTO_INCREMENT for table `staff`
+-- AUTO_INCREMENT untuk tabel `staff`
 --
 ALTER TABLE `staff`
   MODIFY `id_staff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `sub_menu`
+-- AUTO_INCREMENT untuk tabel `sub_menu`
 --
 ALTER TABLE `sub_menu`
   MODIFY `id_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `up`
+-- AUTO_INCREMENT untuk tabel `up`
 --
 ALTER TABLE `up`
   MODIFY `id_up` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -22,6 +22,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="fw-bold text-primary">TENTANG KAMI</h1>
+                <img src="<?php echo base_url('assets/upload/image/thumbs/' . $tentang->gambar); ?>" class="img-fluid w-100" alt="" />
             </div>
             <div class="col-2">
                 <hr style="border-bottom: 2px solid #7c4dff" />

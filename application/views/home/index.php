@@ -38,8 +38,7 @@
       <div class="col">
         <h3 class="text-primary fw-bold">Buku Baru</h3>
         <p class="fw-light text-secondary small">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis,
-          modi.
+          List buku baru terkini
         </p>
       </div>
     </div>
@@ -120,7 +119,7 @@
                   <?php echo character_limiter(strip_tags($berita->isi), 200); ?>
                 </p>
                 <div class="d-grid gap-2">
-                  <a href="#" class="btn btn-outline-primary">Baca selengkapnya</a>
+                  <a href="<?= base_url('Berita/read/' . $berita->slug_berita) ?>" class="btn btn-outline-primary">Baca selengkapnya</a>
                 </div>
               </div>
             </div>
@@ -130,7 +129,7 @@
       } ?>
     </div>
     <div class="text-center pt-4">
-      <a href="#" class="text-decoration-none">Selengkapnya...</a>
+      <a href="<?= base_url('Berita') ?>" class="text-decoration-none">Selengkapnya...</a>
     </div>
   </div>
 </section>

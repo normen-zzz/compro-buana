@@ -57,13 +57,16 @@ $nav_profil     = $this->nav_model->nav_profil();
                         <a href="<?= base_url() ?>" class="text-light small fw-light">Home</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-light small fw-light">Tentang Kami</a>
+                        <a href="<?= base_url('Tentang') ?>" class="text-light small fw-light">Tentang Kami</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-light small fw-light">Produk</a>
+                        <a href="<?= base_url('Produk') ?>" class="text-light small fw-light">Produk</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-light small fw-light">Kontak Kami</a>
+                        <a href="<?= base_url('Galeri') ?>" class="text-light small fw-light">Galeri</a>
+                    </p>
+                    <p>
+                        <a href="<?= base_url('Kontak') ?>" class="text-light small fw-light">Kontak</a>
                     </p>
                 </div>
 
