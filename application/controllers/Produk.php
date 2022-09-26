@@ -62,6 +62,8 @@ class Produk extends CI_Controller
         $config['num_tag_close']     = '</li>';
         $config['per_page']         = 8;
         $config['first_url']         = base_url() . 'home/';
+
+        // var_dump($config['keyword']   );
         $this->pagination->initialize($config);
         $page         = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) * $config['per_page'] : 0;
         $berita     = $this->berita_model->berita($config['per_page'], $page);
@@ -87,6 +89,10 @@ class Produk extends CI_Controller
             'profil'            => $profil,
             'isi'                => 'produk/listproduk'
         );
+        $data['keyword']          = $this->input->get('keyword');
+        $data['produksearch']     = $this->Produk_model->search($data['keyword'], $config['per_page'], $page);
+        // var_dump( $data['produksearch']);
+        // exit;
         $this->load->view('layout/wrapper', $data);
     }
 
